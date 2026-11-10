@@ -1,0 +1,359 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nishu Gautam | Tech Portfolio</title>
+<meta name="description" content="Nishu Gautam - Front-End Developer, Web Designer and Technology Enthusiast.">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #080b12;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(#00bfff0c 1px, transparent 1px),
+    linear-gradient(90deg, #00bfff0c 1px, transparent 1px);
+  background-size: 45px 45px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 8%;
+  background: #080b12eF;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid #ffffff12;
+}
+
+.logo {
+  font-size: 23px;
+  font-weight: bold;
+  color: #00d9ff;
+}
+
+nav a {
+  color: #ccc;
+  text-decoration: none;
+  margin-left: 22px;
+  font-size: 14px;
+}
+
+nav a:hover {
+  color: #00d9ff;
+}
+
+.hero {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 50px 20px;
+  position: relative;
+}
+
+.glow {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: #0077ff;
+  filter: blur(150px);
+  opacity: .25;
+  z-index: -1;
+}
+
+.tag {
+  color: #00d9ff;
+  border: 1px solid #00d9ff55;
+  padding: 9px 18px;
+  border-radius: 30px;
+  font-size: 13px;
+  margin-bottom: 25px;
+}
+
+.hero h1 {
+  font-size: clamp(40px, 8vw, 75px);
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.hero h1 span {
+  background: linear-gradient(90deg, #00d9ff, #7065ff);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.hero p {
+  color: #aab3c5;
+  max-width: 600px;
+  line-height: 1.8;
+}
+
+.buttons {
+  margin-top: 30px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 13px 25px;
+  margin: 7px;
+  text-decoration: none;
+  border-radius: 8px;
+  color: #fff;
+  border: 1px solid #00d9ff;
+  transition: .3s;
+}
+
+.btn.primary {
+  background: #00bde8;
+  color: #050b13;
+  font-weight: bold;
+}
+
+.btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 25px #00d9ff55;
+}
+
+section {
+  padding: 80px 8%;
+  text-align: center;
+}
+
+.heading {
+  font-size: 34px;
+  margin-bottom: 35px;
+}
+
+.heading span {
+  color: #00d9ff;
+}
+
+.about {
+  max-width: 750px;
+  margin: auto;
+  color: #aab3c5;
+  line-height: 1.9;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: linear-gradient(145deg, #131c2b, #0b101a);
+  border: 1px solid #25374d;
+  border-radius: 15px;
+  padding: 30px 20px;
+  transition: .3s;
+}
+
+.card:hover {
+  transform: translateY(-7px);
+  border-color: #00d9ff;
+  box-shadow: 0 10px 35px #00d9ff12;
+}
+
+.card .symbol {
+  font-size: 35px;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  margin-bottom: 12px;
+  color: #00d9ff;
+}
+
+.card p {
+  color: #9daabe;
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+.contact p {
+  color: #aab3c5;
+  margin: 15px;
+}
+
+.contact a {
+  color: #00d9ff;
+  text-decoration: none;
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  background: #0d131f;
+  color: #8190a6;
+  font-size: 13px;
+  border-top: 1px solid #ffffff15;
+}
+
+@media(max-width:600px) {
+  header {
+    padding: 18px 5%;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  nav a {
+    margin: 0 7px;
+    font-size: 12px;
+  }
+
+  section {
+    padding: 60px 6%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">NISHU.</div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+<div class="hero" id="home">
+  <div class="glow"></div>
+
+  <div class="tag">WELCOME TO MY DIGITAL WORLD</div>
+
+  <h1>I'm <span>Nishu Gautam</span></h1>
+
+  <h2>Web Designer | Front-End Developer</h2>
+
+  <p>
+    A versatile guy, creative thinker and technology enthusiast.
+    I love building modern digital experiences, exploring new
+    technologies and turning creative ideas into reality.
+  </p>
+
+  <div class="buttons">
+    <a href="#projects" class="btn primary">Explore My Work</a>
+    <a href="#contact" class="btn">Contact Me</a>
+  </div>
+</div>
+
+<section id="about">
+  <h2 class="heading">About <span>Me</span></h2>
+  <p class="about">
+    I'm Nishu Gautam, a versatile and passionate technology enthusiast
+    interested in web design, front-end development and digital innovation.
+    I enjoy experimenting with modern technologies, learning new skills
+    and creating clean, responsive and interactive websites.
+    My goal is to transform ideas into meaningful digital experiences.
+  </p>
+</section>
+
+<section id="skills">
+  <h2 class="heading">My <span>Skills</span></h2>
+
+  <div class="grid">
+    <div class="card">
+      <div class="symbol">💻</div>
+      <h3>Web Design</h3>
+      <p>Modern layouts, creative interfaces and user-friendly designs.</p>
+    </div>
+
+    <div class="card">
+      <div class="symbol">🌐</div>
+      <h3>Front-End Development</h3>
+      <p>HTML, CSS, JavaScript and responsive website development.</p>
+    </div>
+
+    <div class="card">
+      <div class="symbol">🚀</div>
+      <h3>Technology</h3>
+      <p>Exploring AI, digital innovation and emerging technologies.</p>
+    </div>
+
+    <div class="card">
+      <div class="symbol">🎨</div>
+      <h3>Creative Thinking</h3>
+      <p>Creative ideas, problem solving and digital creativity.</p>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2 class="heading">My <span>Projects</span></h2>
+
+  <div class="grid">
+    <div class="card">
+      <div class="symbol">⚡</div>
+      <h3>Web Projects</h3>
+      <p>Exploring and building modern web experiences.</p>
+    </div>
+
+    <div class="card">
+      <div class="symbol">🤖</div>
+      <h3>AI Experiments</h3>
+      <p>Exploring artificial intelligence and creative tools.</p>
+    </div>
+
+    <div class="card">
+      <div class="symbol">💡</div>
+      <h3>Creative Ideas</h3>
+      <p>Turning innovative concepts into digital projects.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <h2 class="heading">Let's <span>Connect</span></h2>
+  <p>Have an idea or project? Let's build something amazing.</p>
+
+  <p>Email: <a href="mailto:Ytnishugautam123@gmail.com">
+    Ytnishugautam123@gmail.com
+  </a></p>
+
+  <a class="btn primary"
+     href="mailto:Ytnishugautam123@gmail.com">
+     Send Me an Email
+  </a>
+</section>
+
+</main>
+
+<footer>
+  © 2026 Nishu Gautam. All Rights Reserved.
+  <br><br>
+  Designed with passion and technology.
+</footer>
+
+</body>
+</html>
