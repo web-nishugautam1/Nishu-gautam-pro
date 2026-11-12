@@ -5,8 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#10101d">
-<title>Nishu Gautam | Creative Technology</title>
-<meta name="description" content="Nishu Gautam - Web Designer, Front-End Developer and Technology Enthusiast.">
+<title>Nishu Gautam | Digital Universe</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,13 +13,14 @@
 <style>
 :root{
  --bg:#10101d;
- --panel:#191a2b;
- --purple:#9575f5;
+ --panel:#191a2c;
+ --purple:#9875f5;
  --blue:#52b8f5;
  --orange:#ffab67;
  --teal:#50d6b2;
+ --pink:#ed83c5;
  --white:#fff;
- --muted:#aaaabd;
+ --muted:#a6a6ba;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -34,464 +34,597 @@ button{font:inherit;cursor:pointer}
 img{max-width:100%;display:block}
 .container{width:min(1150px,90%);margin:auto}
 
-header{
- position:sticky;top:0;z-index:100;
- background:#10101deF;backdrop-filter:blur(18px);
- border-bottom:1px solid #ffffff17;
+/* INTRO SCREEN */
+.intro{
+ position:fixed;inset:0;z-index:1000;
+ display:flex;align-items:center;justify-content:center;
+ flex-direction:column;background:#10101d;
+ transition:opacity .7s,visibility .7s;
 }
-.nav{
- height:75px;display:flex;
- justify-content:space-between;align-items:center;
+.intro.done{opacity:0;visibility:hidden;pointer-events:none}
+.intro-logo{
+ font:800 clamp(40px,9vw,75px) "Space Grotesk";
+ background:linear-gradient(90deg,var(--blue),var(--purple),var(--orange));
+ -webkit-background-clip:text;color:transparent;
+ animation:logoPulse 1.4s ease infinite alternate;
 }
-.logo{
- font:800 25px "Space Grotesk";
- letter-spacing:-1px;
+.intro-line{
+ width:150px;height:3px;background:#ffffff18;
+ margin-top:25px;border-radius:10px;overflow:hidden;
 }
-.logo span{color:var(--purple)}
-.navlinks{display:flex;gap:27px}
-.navlinks a{
- color:#c7c7d8;font-size:13px;transition:.2s;
+.intro-line:after{
+ content:"";display:block;height:100%;width:100%;
+ background:linear-gradient(90deg,var(--blue),var(--purple));
+ animation:loading 1.5s ease;
 }
-.navlinks a:hover,.navlinks a.active{color:var(--purple)}
-.menu{
- display:none;background:#24243b;color:white;
- border:1px solid #ffffff25;padding:9px 13px;
- border-radius:8px;
+@keyframes loading{from{width:0}to{width:100%}}
+@keyframes logoPulse{to{transform:scale(1.05);filter:brightness(1.3)}}
+
+/* ANIMATED BACKGROUND */
+#particles{
+ position:fixed;inset:0;width:100%;height:100%;
+ z-index:-3;pointer-events:none;
+}
+.background-effects{
+ position:fixed;inset:0;z-index:-2;
+ overflow:hidden;pointer-events:none;
+}
+.blob{
+ position:absolute;width:380px;height:380px;
+ border-radius:50%;filter:blur(100px);
+ opacity:.18;animation:blobMove 16s ease-in-out infinite alternate;
+}
+.blob.one{background:#8b5cf6;top:-180px;left:-100px}
+.blob.two{background:#168fe5;right:-150px;top:30%;animation-delay:-5s}
+.blob.three{background:#e88c5d;bottom:-200px;left:35%;animation-delay:-9s}
+.blob.four{background:#22b99c;top:50%;left:-200px;animation-delay:-3s}
+@keyframes blobMove{
+ 0%{transform:translate(0,0) scale(1)}
+ 50%{transform:translate(90px,70px) scale(1.25)}
+ 100%{transform:translate(-60px,110px) scale(.9)}
+}
+.grid-bg{
+ position:fixed;inset:0;z-index:-1;pointer-events:none;
+ background-image:linear-gradient(#ffffff06 1px,transparent 1px),
+ linear-gradient(90deg,#ffffff06 1px,transparent 1px);
+ background-size:55px 55px;
+}
+.mouse-light{
+ position:fixed;top:0;left:0;width:350px;height:350px;
+ border-radius:50%;pointer-events:none;z-index:-1;
+ background:radial-gradient(circle,#9472f51a,transparent 70%);
+ transform:translate(-50%,-50%);
 }
 
+/* 3D FLOATING SHAPES */
+.floating-shape{
+ position:absolute;pointer-events:none;
+ border:1px solid #ffffff30;
+ background:linear-gradient(135deg,#ffffff19,#ffffff03);
+ backdrop-filter:blur(8px);
+ box-shadow:inset 0 0 25px #ffffff08,0 15px 50px #0004;
+ animation:float3d 8s ease-in-out infinite;
+}
+.sphere{width:65px;height:65px;border-radius:50%}
+.cube{width:55px;height:55px;border-radius:13px;transform:rotate(30deg)}
+.shape1{top:12%;right:9%;animation-delay:-2s}
+.shape2{top:65%;right:4%;animation-delay:-4s}
+.shape3{bottom:10%;left:7%;animation-delay:-1s}
+@keyframes float3d{
+ 0%,100%{transform:translateY(0) rotate(0deg)}
+ 50%{transform:translateY(-30px) rotate(25deg)}
+}
+
+/* NAVIGATION */
+header{
+ position:sticky;top:0;z-index:100;
+ background:#10101de9;backdrop-filter:blur(18px);
+ border-bottom:1px solid #ffffff16;
+}
+.nav{
+ height:76px;display:flex;align-items:center;
+ justify-content:space-between;
+}
+.logo{font:800 25px "Space Grotesk";letter-spacing:-1px}
+.logo span{color:var(--purple)}
+.navlinks{display:flex;gap:25px}
+.navlinks a{
+ font-size:13px;color:#c8c8d8;
+ padding:9px 0;position:relative;
+}
+.navlinks a:after{
+ content:"";position:absolute;bottom:0;left:0;
+ width:0;height:2px;background:var(--blue);
+ transition:.3s;
+}
+.navlinks a:hover,.navlinks a.active{color:var(--blue)}
+.navlinks a.active:after,.navlinks a:hover:after{width:100%}
+.menu{
+ display:none;background:#25243a;color:white;
+ border:1px solid #ffffff25;padding:9px 13px;border-radius:8px;
+}
+
+/* PAGE TRANSITIONS */
 .page{display:none!important}
 .page.active.hero{display:grid!important}
 .page.active:not(.hero){display:block!important}
-.page.active{animation:enter .35s ease}
-@keyframes enter{
- from{opacity:0;transform:translateY(10px)}
- to{opacity:1;transform:translateY(0)}
+.page.active{animation:pageEnter .55s cubic-bezier(.2,.8,.2,1)}
+@keyframes pageEnter{
+ 0%{opacity:0;filter:blur(10px);transform:translateY(18px) scale(.99)}
+ 100%{opacity:1;filter:blur(0);transform:translateY(0) scale(1)}
+}
+.page-cover{
+ position:fixed;inset:0;z-index:90;
+ background:linear-gradient(110deg,#9875f5,#52b8f5,#ffab67);
+ transform:scaleX(0);transform-origin:right;
+ pointer-events:none;
+}
+.page-cover.play{animation:cover .55s ease}
+@keyframes cover{
+ 0%{transform:scaleX(0);transform-origin:right}
+ 45%{transform:scaleX(1);transform-origin:right}
+ 55%{transform-origin:left}
+ 100%{transform:scaleX(0);transform-origin:left}
 }
 
+/* COMMON */
 .hero{
  min-height:680px;grid-template-columns:1fr 1fr;
- align-items:center;gap:45px;padding:75px 0;
+ gap:45px;align-items:center;padding:75px 0;
 }
 .pill{
  display:inline-block;padding:10px 15px;
- border-radius:30px;background:#9575f51b;
- border:1px solid #9575f55c;color:#c7b7ff;
- font-size:11px;letter-spacing:1.5px;
- margin-bottom:23px;
+ border-radius:30px;background:#9875f51c;
+ border:1px solid #9875f555;color:#c8b7ff;
+ font-size:11px;letter-spacing:1px;margin-bottom:25px;
 }
 h1{
- font:700 clamp(43px,6vw,72px)/1.08 "Space Grotesk";
+ font:700 clamp(42px,6vw,72px)/1.1 "Space Grotesk";
  letter-spacing:-2px;margin-bottom:20px;
 }
 .gradient{
- background:linear-gradient(100deg,#a78bfa,#52b8f5,#50d6b2);
+ background:linear-gradient(100deg,#a78bfa,#52b8f5,#50d6b2,#ffab67);
+ background-size:200%;
  -webkit-background-clip:text;color:transparent;
+ animation:colorFlow 6s linear infinite;
 }
-.hero h2{font-size:19px;color:#deddf0;margin-bottom:17px}
-.hero p{font-size:14px;line-height:1.9;color:var(--muted)}
-.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:27px}
+@keyframes colorFlow{to{background-position:200% center}}
+.hero h2{font-size:20px;color:#e2e1ed;margin-bottom:17px}
+.hero p{color:var(--muted);line-height:1.9;font-size:14px}
+.actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:28px}
 .btn{
  display:inline-block;padding:14px 22px;border-radius:9px;
- border:1px solid #ffffff35;font-size:13px;
- font-weight:700;transition:.3s;
-}
-.btn.primary{
- background:linear-gradient(100deg,#8766e9,#478ee9);
- border:0;color:white;
-}
-.btn:hover{transform:translateY(-4px);box-shadow:0 9px 25px #7354db44}
-.hero-visual{position:relative}
-.hero-visual img{
- width:100%;height:390px;object-fit:cover;
- border-radius:22px;border:1px solid #ffffff25;
-}
-.floating{
- position:absolute;bottom:-20px;left:-20px;
- background:#25253b;padding:17px 21px;
- border-radius:12px;border:1px solid #ffffff22;
- box-shadow:0 12px 35px #0005;
-}
-.floating strong{color:#b9a5ff}
-.floating small{display:block;color:var(--muted);margin-top:5px}
-
-.section{padding:85px 0}
-.heading{text-align:center;margin-bottom:43px}
-.heading small{color:var(--teal);letter-spacing:2px}
-.heading h2{
- font:700 37px "Space Grotesk";margin:13px 0;
-}
-.heading p{color:var(--muted);font-size:13px}
-.heading span{color:var(--purple)}
-
-.about-grid{
- display:grid;grid-template-columns:1fr 1fr;
- gap:35px;align-items:center;
-}
-.about-grid img{
- width:100%;height:350px;object-fit:cover;
- border-radius:18px;
-}
-.about-text h3{font:700 29px "Space Grotesk";margin-bottom:18px}
-.about-text p{color:var(--muted);line-height:1.9;font-size:14px}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
-.tag{
- padding:8px 12px;border-radius:7px;
- background:#9575f51b;color:#c7b7ff;font-size:11px;
- border:1px solid #9575f544;
-}
-
-.stats{
- display:grid;grid-template-columns:repeat(4,1fr);
- gap:17px;margin-top:35px;
-}
-.stat{
- padding:24px 15px;border-radius:14px;
- background:linear-gradient(145deg,#25223e,#1b2034);
- border:1px solid #ffffff16;text-align:center;
-}
-.stat h3{
- font:700 30px "Space Grotesk";
- color:#b8a4ff;margin-bottom:8px;
-}
-.stat p{font-size:11px;color:var(--muted)}
-.demo-note{text-align:center;color:#8f8fa7;font-size:10px;margin-top:14px}
-
-.skills-grid,.project-grid{
- display:grid;grid-template-columns:repeat(3,1fr);gap:19px;
-}
-.skill{
- background:linear-gradient(145deg,#24233e,#191d30);
- border:1px solid #ffffff17;padding:27px;
- border-radius:15px;transition:.3s;
-}
-.skill:nth-child(3n+2){background:linear-gradient(145deg,#1d3041,#191d30)}
-.skill:nth-child(3n){background:linear-gradient(145deg,#3b2b34,#191d30)}
-.skill:hover,.project:hover{
- transform:translateY(-6px);
- border-color:#a78bfa;
-}
-.emoji{font-size:33px;margin-bottom:16px}
-.skill h3{font-size:17px;margin-bottom:10px}
-.skill p{font-size:12px;color:var(--muted);line-height:1.8}
-
-.filters{
- display:flex;justify-content:center;flex-wrap:wrap;
- gap:9px;margin-bottom:28px;
-}
-.filter{
- background:#222239;color:#ccc;
- border:1px solid #ffffff20;
- padding:10px 16px;border-radius:30px;font-size:12px;
-}
-.filter.active{background:#8165dc;color:white}
-.project{
- overflow:hidden;background:#1b1d30;
- border:1px solid #ffffff18;border-radius:15px;
+ border:1px solid #ffffff35;font-size:13px;font-weight:700;
  transition:.3s;
 }
+.btn.primary{
+ border:0;background:linear-gradient(100deg,#8766e9,#478ee9);
+ color:white;
+}
+.btn:hover{transform:translateY(-4px);box-shadow:0 10px 30px #7754db44}
+.hero-image{position:relative;perspective:900px}
+.hero-image img{
+ width:100%;height:390px;object-fit:cover;
+ border-radius:20px;border:1px solid #ffffff30;
+ box-shadow:0 25px 80px #0008;
+ transition:transform .4s;
+}
+.image-label{
+ position:absolute;bottom:17px;left:17px;right:17px;
+ padding:16px;background:#10101de8;
+ border:1px solid #ffffff20;border-radius:12px;
+ backdrop-filter:blur(12px);
+}
+.image-label small{color:var(--teal);letter-spacing:2px}
+.image-label h3{margin-top:6px;font-size:16px}
+.section{padding:85px 0}
+.section-head{text-align:center;margin-bottom:45px}
+.section-head small{color:var(--teal);letter-spacing:2px}
+.section-head h2{font:700 37px "Space Grotesk";margin:13px 0}
+.section-head p{color:var(--muted);font-size:13px}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-top:35px}
+.stat{
+ padding:23px 12px;text-align:center;border-radius:14px;
+ background:linear-gradient(145deg,#25213c,#1b2638);
+ border:1px solid #ffffff18;
+}
+.stat h3{font:700 30px "Space Grotesk";color:#b9a5ff;margin-bottom:8px}
+.stat p{font-size:11px;color:var(--muted)}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}
+.about-grid img{width:100%;height:340px;object-fit:cover;border-radius:17px}
+.about-text h3{font:700 28px "Space Grotesk";margin-bottom:18px}
+.about-text p{color:var(--muted);font-size:14px;line-height:1.9}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+.tag{
+ padding:8px 12px;border-radius:7px;
+ background:#9575f522;border:1px solid #9575f544;
+ color:#c9b9ff;font-size:11px;
+}
+
+/* SKILLS */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{
+ padding:27px;border-radius:15px;
+ background:linear-gradient(145deg,#24213c,#19243a);
+ border:1px solid #ffffff18;transition:.35s;
+}
+.card:nth-child(3n+2){background:linear-gradient(145deg,#1e3440,#1c2035)}
+.card:nth-child(3n){background:linear-gradient(145deg,#3b293a,#1c2035)}
+.card:hover{
+ transform:translateY(-8px) rotateX(3deg);
+ border-color:#a78bfa;
+ box-shadow:0 15px 35px #0005;
+}
+.card .emoji{font-size:32px;margin-bottom:16px}
+.card h3{font-size:17px;margin-bottom:11px}
+.card p{color:var(--muted);font-size:12px;line-height:1.8}
+
+/* PROJECTS */
+.filters{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:30px}
+.filter{
+ background:#24233a;color:#ccc;border:1px solid #ffffff22;
+ padding:10px 17px;border-radius:30px;font-size:12px;
+}
+.filter.active{background:#8064df;color:white}
+.project{
+ background:#1b1d30;border:1px solid #ffffff18;
+ border-radius:15px;overflow:hidden;transition:.35s;
+}
+.project:hover{transform:translateY(-8px);border-color:#a78bfa}
 .project.hide{display:none}
 .project img{
- width:100%;height:190px;object-fit:cover;
- transition:.4s;
+ width:100%;height:185px;object-fit:cover;transition:.5s;
 }
-.project:hover img{transform:scale(1.04)}
+.project:hover img{transform:scale(1.06)}
 .project-content{padding:20px}
 .demo-label{
- display:inline-block;background:#ffab671b;
- border:1px solid #ffab6755;color:#ffc18c;
- font-size:9px;letter-spacing:1px;
- padding:6px 9px;border-radius:5px;margin-bottom:12px;
+ display:inline-block;font-size:9px;letter-spacing:1px;
+ padding:6px 9px;border-radius:5px;
+ background:#ffab671c;color:#ffc38f;
+ border:1px solid #ffab6755;margin-bottom:12px;
 }
 .project h3{font-size:17px;margin-bottom:10px}
-.project p{font-size:12px;line-height:1.8;color:var(--muted)}
+.project p{color:var(--muted);font-size:12px;line-height:1.8}
 .project button{
- border:0;background:none;color:#9cbdff;
- font-size:12px;font-weight:bold;margin-top:18px;
+ background:none;border:0;color:#a9caff;
+ font-size:12px;font-weight:700;margin-top:18px;
 }
 
-.journey{
- max-width:700px;margin:auto;
- border-left:2px solid #9575f5;padding-left:25px;
+/* JOURNEY */
+.timeline{max-width:700px;margin:auto;border-left:2px solid #9575f5;padding-left:25px}
+.timeline-card{
+ position:relative;background:#1d2033;
+ border:1px solid #ffffff17;border-radius:12px;
+ padding:23px;margin-bottom:20px;
 }
-.journey-card{
- position:relative;background:#1b1d30;
- padding:23px;border-radius:12px;
- border:1px solid #ffffff17;margin-bottom:20px;
-}
-.journey-card:before{
+.timeline-card:before{
  content:"";position:absolute;left:-32px;top:25px;
- width:11px;height:11px;background:var(--purple);
- border-radius:50%;
+ width:11px;height:11px;background:var(--teal);border-radius:50%;
+ box-shadow:0 0 10px #50d6b2;
 }
-.journey-card small{color:var(--teal)}
-.journey-card h3{margin:10px 0}
-.journey-card p{color:var(--muted);font-size:13px;line-height:1.8}
+.timeline-card small{color:var(--teal)}
+.timeline-card h3{margin:10px 0}
+.timeline-card p{color:var(--muted);font-size:13px;line-height:1.8}
 
+/* CONTACT */
 .contact-box{
  max-width:720px;margin:auto;text-align:center;
- padding:45px 25px;border-radius:20px;
- background:linear-gradient(130deg,#30234c,#183348,#263348);
- border:1px solid #ffffff20;
+ padding:45px 22px;border-radius:20px;
+ background:linear-gradient(130deg,#30234b,#183b4a,#392c46);
+ border:1px solid #ffffff22;
 }
-.contact-box h3{font:700 30px "Space Grotesk";margin-bottom:15px}
-.contact-box p{font-size:13px;color:#d1d0e0;line-height:1.8}
-.email{
- display:block;color:#a7dfff;
- margin:23px 0;overflow-wrap:anywhere;
-}
-footer{
- text-align:center;padding:27px 15px;
- border-top:1px solid #ffffff17;
- color:#9292a9;font-size:12px;line-height:2;
-}
-footer span{color:#b8a4ff}
+.contact-box h3{font:700 29px "Space Grotesk";margin-bottom:15px}
+.contact-box p{font-size:13px;color:#d5d4e3;line-height:1.8}
+.email{display:block;color:#9ce4ff;margin:23px 0;overflow-wrap:anywhere}
 
+/* FOOTER */
+footer{
+ padding:30px 15px;text-align:center;
+ border-top:1px solid #ffffff17;
+ color:#9696ac;font-size:12px;line-height:2;
+}
+footer span{color:#bca8ff}
+
+/* PROJECT POPUP */
 .modal{
- position:fixed;inset:0;z-index:200;
- background:#000b;display:none;
- align-items:center;justify-content:center;padding:20px;
+ position:fixed;inset:0;z-index:300;
+ background:#000c;display:none;align-items:center;
+ justify-content:center;padding:20px;
 }
 .modal.show{display:flex}
 .modal-box{
- max-width:520px;width:100%;padding:27px;
- background:#20233a;border:1px solid #a78bfa;
+ width:100%;max-width:510px;padding:25px;
+ background:#20233b;border:1px solid #a78bfa;
  border-radius:17px;position:relative;
+ animation:pop .3s ease;
 }
-.modal-box img{
- width:100%;height:190px;object-fit:cover;
- border-radius:10px;margin-bottom:18px;
-}
-.modal-box h2{margin-bottom:12px;color:#c6b4ff}
-.modal-box p{color:#c5c5d5;line-height:1.8;font-size:13px}
+@keyframes pop{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
+.modal-box img{width:100%;height:190px;object-fit:cover;border-radius:10px;margin-bottom:18px}
+.modal-box h2{margin-bottom:12px;color:#c8b6ff}
+.modal-box p{font-size:13px;line-height:1.8;color:#c4c5d5}
 .close{
- position:absolute;right:12px;top:12px;
- border:0;border-radius:50%;width:32px;height:32px;
- background:#33334b;color:white;
+ position:absolute;top:10px;right:10px;
+ width:34px;height:34px;border-radius:50%;
+ border:1px solid #ffffff30;background:#20233b;color:white;
 }
+
 @media(max-width:800px){
  .hero{grid-template-columns:1fr}
- .hero-visual img{height:300px}
  .about-grid{grid-template-columns:1fr}
- .skills-grid,.project-grid{grid-template-columns:repeat(2,1fr)}
- .stats{grid-template-columns:repeat(2,1fr)}
+ .grid{grid-template-columns:repeat(2,1fr)}
+ .hero-image img{height:300px}
 }
 @media(max-width:550px){
  .menu{display:block}
  .navlinks{
-  display:none;position:absolute;top:75px;left:0;width:100%;
-  padding:25px;background:#19192a;
-  flex-direction:column;gap:20px;
+  display:none;position:absolute;top:75px;left:0;
+  width:100%;padding:25px;background:#1a1a2c;
+  flex-direction:column;gap:21px;
  }
  .navlinks.open{display:flex}
  .hero{min-height:auto;padding:65px 0}
- .skills-grid,.project-grid{grid-template-columns:1fr}
+ .grid{grid-template-columns:1fr}
+ .stats{grid-template-columns:repeat(2,1fr)}
  .section{padding:65px 0}
- .heading h2{font-size:30px}
+ .section-head h2{font-size:30px}
+ .hero-image img{height:260px}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*:before,*:after{
+  animation-duration:.01ms!important;
+  animation-iteration-count:1!important;
+  scroll-behavior:auto!important;
+  transition-duration:.01ms!important;
+ }
 }
 </style>
 </head>
 
 <body>
 
-<header>
-<div class="container nav">
- <a href="#home" class="logo">NISHU<span>.</span></a>
- <button class="menu" id="menu">☰</button>
- <nav class="navlinks" id="links">
-  <a href="#home">Home</a>
-  <a href="#about">About</a>
-  <a href="#skills">Skills</a>
-  <a href="#projects">Projects</a>
-  <a href="#journey">Journey</a>
-  <a href="#contact">Contact</a>
- </nav>
+<!-- INTRO -->
+<div class="intro" id="intro">
+ <div class="intro-logo">NISHU.</div>
+ <div style="color:#aaaabd;font-size:11px;letter-spacing:4px;margin-top:12px">DIGITAL EXPERIENCE</div>
+ <div class="intro-line"></div>
 </div>
+
+<canvas id="particles"></canvas>
+<div class="background-effects">
+ <div class="blob one"></div>
+ <div class="blob two"></div>
+ <div class="blob three"></div>
+ <div class="blob four"></div>
+</div>
+<div class="grid-bg"></div>
+<div class="mouse-light" id="mouseLight"></div>
+
+<div class="page-cover" id="pageCover"></div>
+
+<header>
+ <div class="container nav">
+  <a href="#home" class="logo">NISHU<span>.</span></a>
+  <button class="menu" id="menu" aria-label="Toggle menu">☰</button>
+  <nav class="navlinks" id="links">
+   <a href="#home">Home</a>
+   <a href="#about">About</a>
+   <a href="#skills">Skills</a>
+   <a href="#projects">Projects</a>
+   <a href="#journey">Journey</a>
+   <a href="#contact">Contact</a>
+  </nav>
+ </div>
 </header>
 
 <main>
 
+<!-- HOME -->
 <section class="page hero container active" id="home">
+ <div class="floating-shape sphere shape1"></div>
+ <div class="floating-shape cube shape2"></div>
  <div>
-  <div class="pill">✦ DIGITAL CREATOR & TECH ENTHUSIAST</div>
-  <h1>Beyond Ideas.<br><span class="gradient">Into Innovation.</span></h1>
+  <div class="pill">✦ CREATIVE MIND • DIGITAL VISION</div>
+  <h1>Think Beyond.<br><span class="gradient">Create The Future.</span></h1>
   <h2>I'm Nishu Gautam.</h2>
   <p>
-   Versatile guy. Web Designer. Front-End Developer.
-   Technology enthusiast with a passion for creativity,
-   digital innovation and building modern experiences.
+   A versatile guy, web designer, front-end developer
+   and technology enthusiast. Exploring digital innovation,
+   creative possibilities and modern technology.
   </p>
   <div class="actions">
-   <a class="btn primary" href="#projects">Explore My Work ↗</a>
-   <a class="btn" href="#contact">Contact Me</a>
+   <a href="#projects" class="btn primary">Explore My Work ↗</a>
+   <a href="#contact" class="btn">Let's Connect</a>
   </div>
  </div>
- <div class="hero-visual">
-  <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=85" alt="Computer processor">
-  <div class="floating">
-   <strong>CREATIVE × TECHNOLOGY</strong>
-   <small>Building ideas for the digital world.</small>
+ <div class="hero-image">
+  <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=85" alt="Advanced computer technology">
+  <div class="image-label">
+   <small>MY DIGITAL UNIVERSE</small>
+   <h3>Creativity meets Technology.</h3>
   </div>
  </div>
 </section>
 
+<!-- ABOUT -->
 <section class="page section" id="about">
 <div class="container">
- <div class="heading">
+ <div class="section-head">
   <small>GET TO KNOW ME</small>
-  <h2>About <span>Me</span></h2>
-  <p>A curious mind. An ambitious digital creator.</p>
+  <h2>About <span class="gradient">Me</span></h2>
+  <p>A curious mind with a passion for innovation.</p>
  </div>
  <div class="about-grid">
-  <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=85" alt="Creative technology team">
+  <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=85" alt="Creative technology workspace">
   <div class="about-text">
-   <h3>Creativity Meets Technology.</h3>
+   <h3>Building Ideas Into Experiences.</h3>
    <p>
-    I'm Nishu Gautam, a versatile individual interested in
-    web design, front-end development, AI and emerging technologies.
-    I enjoy exploring innovative tools, learning new skills
-    and transforming creative ideas into digital experiences.
+    I'm Nishu Gautam, a versatile individual interested in web
+    design, front-end development, AI and digital creativity.
+    I enjoy exploring modern technologies, learning new skills
+    and creating interactive digital experiences.
     <br><br>
-    My vision is to keep learning, experimenting and building
-    something meaningful with technology.
+    I believe in continuous learning, creative thinking
+    and making the most of technology.
    </p>
    <div class="tags">
     <span class="tag">Web Designer</span>
-    <span class="tag">Developer</span>
-    <span class="tag">Tech Enthusiast</span>
+    <span class="tag">Front-End Developer</span>
+    <span class="tag">AI Explorer</span>
     <span class="tag">Creative Thinker</span>
    </div>
   </div>
  </div>
+
+ <div class="stats">
+  <div class="stat"><h3 class="counter" data-value="25" data-suffix="+">0</h3><p>Demo Project Ideas</p></div>
+  <div class="stat"><h3 class="counter" data-value="10" data-suffix="+">0</h3><p>Technology Areas</p></div>
+  <div class="stat"><h3 class="counter" data-value="500" data-suffix="+">0</h3><p>Demo Learning Hours</p></div>
+  <div class="stat"><h3 class="counter" data-value="100" data-suffix="%">0</h3><p>Creative Mindset</p></div>
+ </div>
+ <p class="demo-note">* Illustrative prototype statistics, not verified achievements.</p>
 </div>
 </section>
 
+<!-- SKILLS -->
 <section class="page section" id="skills">
 <div class="container">
- <div class="heading">
-  <small>MY TECHNOLOGY TOOLKIT</small>
-  <h2>Skills & <span>Interests</span></h2>
-  <p>Things I explore, learn and experiment with.</p>
+ <div class="section-head">
+  <small>MY CREATIVE TOOLKIT</small>
+  <h2>Skills & <span class="gradient">Interests</span></h2>
+  <p>Technologies I explore and continue learning.</p>
  </div>
- <div class="skills-grid">
-  <div class="skill"><div class="emoji">🌐</div><h3>HTML & CSS</h3><p>Website structures, styling and modern layouts.</p></div>
-  <div class="skill"><div class="emoji">⚡</div><h3>JavaScript</h3><p>Interactive front-end experiences.</p></div>
-  <div class="skill"><div class="emoji">🎨</div><h3>UI / UX Design</h3><p>Creative interfaces and digital design.</p></div>
-  <div class="skill"><div class="emoji">🤖</div><h3>Artificial Intelligence</h3><p>Exploring AI and intelligent applications.</p></div>
-  <div class="skill"><div class="emoji">💻</div><h3>Technology</h3><p>Discovering new tools and innovations.</p></div>
-  <div class="skill"><div class="emoji">🚀</div><h3>Problem Solving</h3><p>Creative ideas and logical thinking.</p></div>
+ <div class="grid">
+  <div class="card"><div class="emoji">🌐</div><h3>HTML & CSS</h3><p>Website structure, styling and responsive layouts.</p></div>
+  <div class="card"><div class="emoji">⚡</div><h3>JavaScript</h3><p>Interactive interfaces and front-end functionality.</p></div>
+  <div class="card"><div class="emoji">🎨</div><h3>UI / UX Design</h3><p>Modern visual design and user experiences.</p></div>
+  <div class="card"><div class="emoji">🤖</div><h3>Artificial Intelligence</h3><p>Exploring AI tools and intelligent applications.</p></div>
+  <div class="card"><div class="emoji">🧠</div><h3>Problem Solving</h3><p>Creative ideas and logical approaches.</p></div>
+  <div class="card"><div class="emoji">🚀</div><h3>Digital Innovation</h3><p>New technology, experiments and possibilities.</p></div>
  </div>
 </div>
 </section>
 
+<!-- PROJECTS -->
 <section class="page section" id="projects">
 <div class="container">
- <div class="heading">
-  <small>EXPERIMENTAL WORKSPACE</small>
-  <h2>Featured <span>Projects</span></h2>
-  <p>Demo concepts created for portfolio presentation.</p>
+ <div class="section-head">
+  <small>MY EXPERIMENTAL WORKSPACE</small>
+  <h2>Featured <span class="gradient">Projects</span></h2>
+  <p>Creative demonstration concepts and prototype ideas.</p>
  </div>
-
  <div class="filters">
-  <button class="filter active" data-filter="all">All</button>
-  <button class="filter" data-filter="web">Web</button>
+  <button class="filter active" data-filter="all">All Projects</button>
+  <button class="filter" data-filter="web">Web Design</button>
   <button class="filter" data-filter="ai">AI & Tech</button>
   <button class="filter" data-filter="creative">Creative</button>
  </div>
+ <div class="grid">
 
- <div class="project-grid">
   <article class="project" data-category="ai">
    <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=85" alt="AI robot">
    <div class="project-content">
     <span class="demo-label">DEMO CONCEPT</span>
-    <h3>NEXUS AI</h3><p>Futuristic AI assistant interface concept.</p>
-    <button onclick="showProject(0)">View Details ↗</button>
+    <h3>NEXUS AI</h3><p>Futuristic AI assistant dashboard.</p>
+    <button onclick="showProject(0)">Explore Details ↗</button>
    </div>
   </article>
+
   <article class="project" data-category="web">
    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=85" alt="Analytics dashboard">
    <div class="project-content">
     <span class="demo-label">DEMO CONCEPT</span>
-    <h3>QUANTUM DASHBOARD</h3><p>Modern data visualization dashboard.</p>
-    <button onclick="showProject(1)">View Details ↗</button>
+    <h3>QUANTUM DASHBOARD</h3><p>Modern analytics and visualization.</p>
+    <button onclick="showProject(1)">Explore Details ↗</button>
    </div>
   </article>
+
   <article class="project" data-category="ai">
-   <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=85" alt="Cyber security">
+   <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=85" alt="Cybersecurity concept">
    <div class="project-content">
     <span class="demo-label">DEMO CONCEPT</span>
-    <h3>CYBER SHIELD</h3><p>Cybersecurity monitoring UI concept.</p>
-    <button onclick="showProject(2)">View Details ↗</button>
+    <h3>CYBER SHIELD</h3><p>Cybersecurity interface concept.</p>
+    <button onclick="showProject(2)">Explore Details ↗</button>
    </div>
   </article>
+
   <article class="project" data-category="web">
-   <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=85" alt="Web developer workspace">
+   <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=85" alt="Developer workspace">
    <div class="project-content">
     <span class="demo-label">DEMO CONCEPT</span>
-    <h3>DEVSPACE</h3><p>Creative front-end developer portfolio.</p>
-    <button onclick="showProject(3)">View Details ↗</button>
+    <h3>DEVSPACE</h3><p>Developer portfolio design concept.</p>
+    <button onclick="showProject(3)">Explore Details ↗</button>
    </div>
   </article>
+
   <article class="project" data-category="creative">
-   <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=800&q=85" alt="Digital future">
+   <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=800&q=85" alt="Digital futuristic visuals">
    <div class="project-content">
     <span class="demo-label">DEMO CONCEPT</span>
-    <h3>NEON UNIVERSE</h3><p>Experimental digital art and visual design.</p>
-    <button onclick="showProject(4)">View Details ↗</button>
+    <h3>NEON UNIVERSE</h3><p>Experimental digital visual design.</p>
+    <button onclick="showProject(4)">Explore Details ↗</button>
    </div>
   </article>
+
   <article class="project" data-category="creative">
-   <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=85" alt="Digital creative studio">
+   <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=85" alt="Digital creative work">
    <div class="project-content">
     <span class="demo-label">DEMO CONCEPT</span>
-    <h3>DIGITAL STUDIO</h3><p>Creative digital agency website concept.</p>
-    <button onclick="showProject(5)">View Details ↗</button>
+    <h3>DIGITAL STUDIO</h3><p>Creative digital agency concept.</p>
+    <button onclick="showProject(5)">Explore Details ↗</button>
    </div>
   </article>
+
  </div>
 </div>
 </section>
 
+<!-- JOURNEY -->
 <section class="page section" id="journey">
 <div class="container">
- <div class="heading">
-  <small>GROWTH & DEVELOPMENT</small>
-  <h2>My <span>Journey</span></h2>
-  <p>Always learning. Always exploring.</p>
+ <div class="section-head">
+  <small>CONTINUOUS GROWTH</small>
+  <h2>My <span class="gradient">Journey</span></h2>
+  <p>Learning, creating and discovering new possibilities.</p>
  </div>
- <div class="journey">
-  <div class="journey-card">
+ <div class="timeline">
+  <div class="timeline-card">
    <small>FOUNDATION</small>
    <h3>Discovering Technology</h3>
-   <p>Learning computers, digital tools and technology fundamentals.</p>
+   <p>Building an understanding of computers, technology and digital tools.</p>
   </div>
-  <div class="journey-card">
+  <div class="timeline-card">
    <small>WEB DEVELOPMENT</small>
    <h3>Exploring the Web</h3>
-   <p>Exploring front-end development, HTML, CSS and JavaScript.</p>
+   <p>Learning website development, HTML, CSS and JavaScript.</p>
   </div>
-  <div class="journey-card">
+  <div class="timeline-card">
    <small>AI & INNOVATION</small>
    <h3>Exploring New Possibilities</h3>
-   <p>Experimenting with AI and emerging digital technologies.</p>
+   <p>Experimenting with artificial intelligence and emerging tools.</p>
   </div>
  </div>
 </div>
 </section>
 
+<!-- CONTACT -->
 <section class="page section" id="contact">
 <div class="container">
- <div class="heading">
-  <small>GET IN TOUCH</small>
-  <h2>Let's <span>Connect</span></h2>
-  <p>Ideas, opportunities and creative collaborations.</p>
+ <div class="section-head">
+  <small>LET'S CONNECT</small>
+  <h2>Get In <span class="gradient">Touch</span></h2>
+  <p>Ideas, projects and creative collaborations.</p>
  </div>
  <div class="contact-box">
   <h3>Let's Build Something Amazing.</h3>
-  <p>Have an interesting idea or project? I'd love to hear from you.</p>
+  <p>Have an idea, opportunity or interesting project?<br>Let's connect and create something meaningful.</p>
   <a class="email" href="mailto:Ytnishugautam123@gmail.com">Ytnishugautam123@gmail.com</a>
   <div class="actions" style="justify-content:center">
    <a class="btn primary" href="mailto:Ytnishugautam123@gmail.com?subject=Project%20Enquiry">Send Email ↗</a>
-   <a class="btn" href="https://github.com/web-nishugautam1" target="_blank">GitHub ↗</a>
+   <a class="btn" href="https://github.com/web-nishugautam1" target="_blank" rel="noopener">GitHub ↗</a>
   </div>
  </div>
 </div>
@@ -501,52 +634,137 @@ footer span{color:#b8a4ff}
 
 <footer>
  Designed & Developed by <span>Nishu Gautam</span><br>
- © 2026 Nishu Gautam. All Rights Reserved.
+ © 2026 Nishu Gautam. All Rights Reserved.<br>
+ Creative Mind • Digital Vision • Future Technology
 </footer>
 
+<!-- PROJECT MODAL -->
 <div class="modal" id="modal" onclick="outsideClose(event)">
  <div class="modal-box">
   <button class="close" onclick="closeModal()">✕</button>
-  <img id="modalImg" src="" alt="Project">
+  <img id="modalImg" src="" alt="Project preview">
   <span class="demo-label">DEMO / CONCEPT PROJECT</span>
   <h2 id="modalTitle"></h2>
   <p id="modalText"></p>
   <br>
-  <a class="btn primary" href="mailto:Ytnishugautam123@gmail.com">Discuss Project ↗</a>
+  <a class="btn primary" href="mailto:Ytnishugautam123@gmail.com?subject=Project%20Enquiry">Discuss an Idea ↗</a>
  </div>
 </div>
 
 <script>
-const pages=document.querySelectorAll(".page");
-const links=document.querySelectorAll(".navlinks a");
-const menu=document.getElementById("menu");
-const nav=document.getElementById("links");
+/* INTRO */
+const intro=document.getElementById("intro");
+window.addEventListener("load",()=>{
+ setTimeout(()=>intro.classList.add("done"),1500);
+});
 
-function openPage(id,update=true){
+/* PARTICLE NETWORK */
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+let particles=[];
+let width,height;
+const mobile=window.matchMedia("(max-width:600px)").matches;
+const reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const particleCount=reduced?0:(mobile?28:65);
+
+function resizeCanvas(){
+ width=canvas.width=window.innerWidth;
+ height=canvas.height=window.innerHeight;
+}
+function makeParticles(){
+ particles=Array.from({length:particleCount},()=>({
+  x:Math.random()*width,
+  y:Math.random()*height,
+  vx:(Math.random()-.5)*.35,
+  vy:(Math.random()-.5)*.35,
+  r:Math.random()*2+1
+ }));
+}
+function animateParticles(){
+ ctx.clearRect(0,0,width,height);
+ particles.forEach((p,i)=>{
+  p.x+=p.vx;p.y+=p.vy;
+  if(p.x<0||p.x>width)p.vx*=-1;
+  if(p.y<0||p.y>height)p.vy*=-1;
+  ctx.beginPath();
+  ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+  ctx.fillStyle="rgba(160,185,255,.65)";
+  ctx.fill();
+
+  for(let j=i+1;j<particles.length;j++){
+   let q=particles[j];
+   let dx=p.x-q.x,dy=p.y-q.y;
+   let distance=Math.sqrt(dx*dx+dy*dy);
+   if(distance<115){
+    ctx.beginPath();
+    ctx.moveTo(p.x,p.y);
+    ctx.lineTo(q.x,q.y);
+    ctx.strokeStyle="rgba(145,135,220,"+(1-distance/115)*.18+")";
+    ctx.lineWidth=.7;
+    ctx.stroke();
+   }
+  }
+ });
+ if(!reduced)requestAnimationFrame(animateParticles);
+}
+resizeCanvas();
+makeParticles();
+if(!reduced)animateParticles();
+window.addEventListener("resize",()=>{
+ resizeCanvas();makeParticles();
+});
+
+/* MOUSE LIGHT */
+const light=document.getElementById("mouseLight");
+if(!mobile){
+ window.addEventListener("mousemove",e=>{
+  light.style.left=e.clientX+"px";
+  light.style.top=e.clientY+"px";
+ });
+}
+
+/* PAGE NAVIGATION */
+const pages=document.querySelectorAll(".page");
+const navlinks=document.querySelectorAll(".navlinks a");
+const nav=document.getElementById("links");
+const menu=document.getElementById("menu");
+const cover=document.getElementById("pageCover");
+
+let currentPage="home";
+let transitionTimer;
+
+function openPage(id,push=true){
  const target=document.getElementById(id);
- if(!target || !target.classList.contains("page")) return;
+ if(!target||!target.classList.contains("page"))return;
+ if(id===currentPage)return;
+
+ clearTimeout(transitionTimer);
+
+ if(!reduced){
+  cover.classList.remove("play");
+  void cover.offsetWidth;
+  cover.classList.add("play");
+ }
 
  pages.forEach(p=>p.classList.remove("active"));
  target.classList.add("active");
+ currentPage=id;
 
- links.forEach(a=>a.classList.toggle("active",a.hash==="#"+id));
+ navlinks.forEach(a=>{
+  a.classList.toggle("active",a.hash==="#"+id);
+ });
+
  nav.classList.remove("open");
  menu.textContent="☰";
- window.scrollTo(0,0);
 
- if(update) history.pushState({page:id},"","#"+id);
+ window.scrollTo({top:0,behavior:"instant"});
+
+ if(push)history.pushState({page:id},"","#"+id);
 }
-
-links.forEach(a=>{
- a.addEventListener("click",e=>{
-  e.preventDefault();
-  openPage(a.hash.slice(1));
- });
-});
 
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
  a.addEventListener("click",e=>{
-  const id=a.getAttribute("href").slice(1);
+  const id=a.hash.slice(1);
   if(document.getElementById(id)?.classList.contains("page")){
    e.preventDefault();
    openPage(id);
@@ -560,642 +778,69 @@ menu.addEventListener("click",()=>{
 });
 
 window.addEventListener("popstate",()=>{
- openPage(location.hash.slice(1)||"home",false);
-});
-
-openPage(location.hash.slice(1)||"home",false);
-
-document.querySelectorAll(".filter").forEach(btn=>{
- btn.addEventListener("click",()=>{
-  document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));
-  btn.classList.add("active");
-  document.querySelectorAll(".project").forEach(card=>{
-   card.classList.toggle("hide",
-    btn.dataset.filter!=="all" &&
-    card.dataset.category!==btn.dataset.filter);
-  });
- });
-});
-
-const descriptions=[
- ["NEXUS AI","An experimental artificial intelligence dashboard concept with futuristic visual elements."],
- ["QUANTUM DASHBOARD","A sample analytics dashboard design featuring data visualization."],
- ["CYBER SHIELD","A cybersecurity monitoring interface concept."],
- ["DEVSPACE","A modern developer portfolio and web interface concept."],
- ["NEON UNIVERSE","An experimental digital art and immersive interface concept."],
- ["DIGITAL STUDIO","A creative digital branding and agency website concept."]
-];
-
-function showProject(i){
- const card=document.querySelectorAll(".project")[i];
- document.getElementById("modalTitle").textContent=descriptions[i][0];
- document.getElementById("modalText").textContent=descriptions[i][1];
- document.getElementById("modalImg").src=card.querySelector("img").src;
- document.getElementById("modal").classList.add("show");
- document.body.style.overflow="hidden";
-}
-
-function closeModal(){
- document.getElementById("modal").classList.remove("show");
- document.body.style.overflow="";
-}
-
-function outsideClose(e){
- if(e.target.id==="modal")closeModal();
-}
-
-document.addEventListener("keydown",e=>{
- if(e.key==="Escape")closeModal();
-});
-</script>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#10101d">
-<title>Nishu Gautam | Creative Technology</title>
-<meta name="description" content="Nishu Gautam - Web Designer, Front-End Developer and Technology Enthusiast.">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-:root{
- --bg:#10101d;
- --panel:#191a2b;
- --purple:#9575f5;
- --blue:#52b8f5;
- --orange:#ffab67;
- --teal:#50d6b2;
- --white:#fff;
- --muted:#aaaabd;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
- background:var(--bg);color:var(--white);
- font-family:Inter,Arial,sans-serif;
- overflow-x:hidden;
-}
-a{text-decoration:none;color:inherit}
-button{font:inherit;cursor:pointer}
-img{max-width:100%;display:block}
-.container{width:min(1150px,90%);margin:auto}
-
-header{
- position:sticky;top:0;z-index:100;
- background:#10101deF;backdrop-filter:blur(18px);
- border-bottom:1px solid #ffffff17;
-}
-.nav{
- height:75px;display:flex;
- justify-content:space-between;align-items:center;
-}
-.logo{
- font:800 25px "Space Grotesk";
- letter-spacing:-1px;
-}
-.logo span{color:var(--purple)}
-.navlinks{display:flex;gap:27px}
-.navlinks a{
- color:#c7c7d8;font-size:13px;transition:.2s;
-}
-.navlinks a:hover,.navlinks a.active{color:var(--purple)}
-.menu{
- display:none;background:#24243b;color:white;
- border:1px solid #ffffff25;padding:9px 13px;
- border-radius:8px;
-}
-
-.page{display:none!important}
-.page.active.hero{display:grid!important}
-.page.active:not(.hero){display:block!important}
-.page.active{animation:enter .35s ease}
-@keyframes enter{
- from{opacity:0;transform:translateY(10px)}
- to{opacity:1;transform:translateY(0)}
-}
-
-.hero{
- min-height:680px;grid-template-columns:1fr 1fr;
- align-items:center;gap:45px;padding:75px 0;
-}
-.pill{
- display:inline-block;padding:10px 15px;
- border-radius:30px;background:#9575f51b;
- border:1px solid #9575f55c;color:#c7b7ff;
- font-size:11px;letter-spacing:1.5px;
- margin-bottom:23px;
-}
-h1{
- font:700 clamp(43px,6vw,72px)/1.08 "Space Grotesk";
- letter-spacing:-2px;margin-bottom:20px;
-}
-.gradient{
- background:linear-gradient(100deg,#a78bfa,#52b8f5,#50d6b2);
- -webkit-background-clip:text;color:transparent;
-}
-.hero h2{font-size:19px;color:#deddf0;margin-bottom:17px}
-.hero p{font-size:14px;line-height:1.9;color:var(--muted)}
-.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:27px}
-.btn{
- display:inline-block;padding:14px 22px;border-radius:9px;
- border:1px solid #ffffff35;font-size:13px;
- font-weight:700;transition:.3s;
-}
-.btn.primary{
- background:linear-gradient(100deg,#8766e9,#478ee9);
- border:0;color:white;
-}
-.btn:hover{transform:translateY(-4px);box-shadow:0 9px 25px #7354db44}
-.hero-visual{position:relative}
-.hero-visual img{
- width:100%;height:390px;object-fit:cover;
- border-radius:22px;border:1px solid #ffffff25;
-}
-.floating{
- position:absolute;bottom:-20px;left:-20px;
- background:#25253b;padding:17px 21px;
- border-radius:12px;border:1px solid #ffffff22;
- box-shadow:0 12px 35px #0005;
-}
-.floating strong{color:#b9a5ff}
-.floating small{display:block;color:var(--muted);margin-top:5px}
-
-.section{padding:85px 0}
-.heading{text-align:center;margin-bottom:43px}
-.heading small{color:var(--teal);letter-spacing:2px}
-.heading h2{
- font:700 37px "Space Grotesk";margin:13px 0;
-}
-.heading p{color:var(--muted);font-size:13px}
-.heading span{color:var(--purple)}
-
-.about-grid{
- display:grid;grid-template-columns:1fr 1fr;
- gap:35px;align-items:center;
-}
-.about-grid img{
- width:100%;height:350px;object-fit:cover;
- border-radius:18px;
-}
-.about-text h3{font:700 29px "Space Grotesk";margin-bottom:18px}
-.about-text p{color:var(--muted);line-height:1.9;font-size:14px}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
-.tag{
- padding:8px 12px;border-radius:7px;
- background:#9575f51b;color:#c7b7ff;font-size:11px;
- border:1px solid #9575f544;
-}
-
-.stats{
- display:grid;grid-template-columns:repeat(4,1fr);
- gap:17px;margin-top:35px;
-}
-.stat{
- padding:24px 15px;border-radius:14px;
- background:linear-gradient(145deg,#25223e,#1b2034);
- border:1px solid #ffffff16;text-align:center;
-}
-.stat h3{
- font:700 30px "Space Grotesk";
- color:#b8a4ff;margin-bottom:8px;
-}
-.stat p{font-size:11px;color:var(--muted)}
-.demo-note{text-align:center;color:#8f8fa7;font-size:10px;margin-top:14px}
-
-.skills-grid,.project-grid{
- display:grid;grid-template-columns:repeat(3,1fr);gap:19px;
-}
-.skill{
- background:linear-gradient(145deg,#24233e,#191d30);
- border:1px solid #ffffff17;padding:27px;
- border-radius:15px;transition:.3s;
-}
-.skill:nth-child(3n+2){background:linear-gradient(145deg,#1d3041,#191d30)}
-.skill:nth-child(3n){background:linear-gradient(145deg,#3b2b34,#191d30)}
-.skill:hover,.project:hover{
- transform:translateY(-6px);
- border-color:#a78bfa;
-}
-.emoji{font-size:33px;margin-bottom:16px}
-.skill h3{font-size:17px;margin-bottom:10px}
-.skill p{font-size:12px;color:var(--muted);line-height:1.8}
-
-.filters{
- display:flex;justify-content:center;flex-wrap:wrap;
- gap:9px;margin-bottom:28px;
-}
-.filter{
- background:#222239;color:#ccc;
- border:1px solid #ffffff20;
- padding:10px 16px;border-radius:30px;font-size:12px;
-}
-.filter.active{background:#8165dc;color:white}
-.project{
- overflow:hidden;background:#1b1d30;
- border:1px solid #ffffff18;border-radius:15px;
- transition:.3s;
-}
-.project.hide{display:none}
-.project img{
- width:100%;height:190px;object-fit:cover;
- transition:.4s;
-}
-.project:hover img{transform:scale(1.04)}
-.project-content{padding:20px}
-.demo-label{
- display:inline-block;background:#ffab671b;
- border:1px solid #ffab6755;color:#ffc18c;
- font-size:9px;letter-spacing:1px;
- padding:6px 9px;border-radius:5px;margin-bottom:12px;
-}
-.project h3{font-size:17px;margin-bottom:10px}
-.project p{font-size:12px;line-height:1.8;color:var(--muted)}
-.project button{
- border:0;background:none;color:#9cbdff;
- font-size:12px;font-weight:bold;margin-top:18px;
-}
-
-.journey{
- max-width:700px;margin:auto;
- border-left:2px solid #9575f5;padding-left:25px;
-}
-.journey-card{
- position:relative;background:#1b1d30;
- padding:23px;border-radius:12px;
- border:1px solid #ffffff17;margin-bottom:20px;
-}
-.journey-card:before{
- content:"";position:absolute;left:-32px;top:25px;
- width:11px;height:11px;background:var(--purple);
- border-radius:50%;
-}
-.journey-card small{color:var(--teal)}
-.journey-card h3{margin:10px 0}
-.journey-card p{color:var(--muted);font-size:13px;line-height:1.8}
-
-.contact-box{
- max-width:720px;margin:auto;text-align:center;
- padding:45px 25px;border-radius:20px;
- background:linear-gradient(130deg,#30234c,#183348,#263348);
- border:1px solid #ffffff20;
-}
-.contact-box h3{font:700 30px "Space Grotesk";margin-bottom:15px}
-.contact-box p{font-size:13px;color:#d1d0e0;line-height:1.8}
-.email{
- display:block;color:#a7dfff;
- margin:23px 0;overflow-wrap:anywhere;
-}
-footer{
- text-align:center;padding:27px 15px;
- border-top:1px solid #ffffff17;
- color:#9292a9;font-size:12px;line-height:2;
-}
-footer span{color:#b8a4ff}
-
-.modal{
- position:fixed;inset:0;z-index:200;
- background:#000b;display:none;
- align-items:center;justify-content:center;padding:20px;
-}
-.modal.show{display:flex}
-.modal-box{
- max-width:520px;width:100%;padding:27px;
- background:#20233a;border:1px solid #a78bfa;
- border-radius:17px;position:relative;
-}
-.modal-box img{
- width:100%;height:190px;object-fit:cover;
- border-radius:10px;margin-bottom:18px;
-}
-.modal-box h2{margin-bottom:12px;color:#c6b4ff}
-.modal-box p{color:#c5c5d5;line-height:1.8;font-size:13px}
-.close{
- position:absolute;right:12px;top:12px;
- border:0;border-radius:50%;width:32px;height:32px;
- background:#33334b;color:white;
-}
-@media(max-width:800px){
- .hero{grid-template-columns:1fr}
- .hero-visual img{height:300px}
- .about-grid{grid-template-columns:1fr}
- .skills-grid,.project-grid{grid-template-columns:repeat(2,1fr)}
- .stats{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:550px){
- .menu{display:block}
- .navlinks{
-  display:none;position:absolute;top:75px;left:0;width:100%;
-  padding:25px;background:#19192a;
-  flex-direction:column;gap:20px;
- }
- .navlinks.open{display:flex}
- .hero{min-height:auto;padding:65px 0}
- .skills-grid,.project-grid{grid-template-columns:1fr}
- .section{padding:65px 0}
- .heading h2{font-size:30px}
-}
-</style>
-</head>
-
-<body>
-
-<header>
-<div class="container nav">
- <a href="#home" class="logo">NISHU<span>.</span></a>
- <button class="menu" id="menu">☰</button>
- <nav class="navlinks" id="links">
-  <a href="#home">Home</a>
-  <a href="#about">About</a>
-  <a href="#skills">Skills</a>
-  <a href="#projects">Projects</a>
-  <a href="#journey">Journey</a>
-  <a href="#contact">Contact</a>
- </nav>
-</div>
-</header>
-
-<main>
-
-<section class="page hero container active" id="home">
- <div>
-  <div class="pill">✦ DIGITAL CREATOR & TECH ENTHUSIAST</div>
-  <h1>Beyond Ideas.<br><span class="gradient">Into Innovation.</span></h1>
-  <h2>I'm Nishu Gautam.</h2>
-  <p>
-   Versatile guy. Web Designer. Front-End Developer.
-   Technology enthusiast with a passion for creativity,
-   digital innovation and building modern experiences.
-  </p>
-  <div class="actions">
-   <a class="btn primary" href="#projects">Explore My Work ↗</a>
-   <a class="btn" href="#contact">Contact Me</a>
-  </div>
- </div>
- <div class="hero-visual">
-  <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=85" alt="Computer processor">
-  <div class="floating">
-   <strong>CREATIVE × TECHNOLOGY</strong>
-   <small>Building ideas for the digital world.</small>
-  </div>
- </div>
-</section>
-
-<section class="page section" id="about">
-<div class="container">
- <div class="heading">
-  <small>GET TO KNOW ME</small>
-  <h2>About <span>Me</span></h2>
-  <p>A curious mind. An ambitious digital creator.</p>
- </div>
- <div class="about-grid">
-  <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=85" alt="Creative technology team">
-  <div class="about-text">
-   <h3>Creativity Meets Technology.</h3>
-   <p>
-    I'm Nishu Gautam, a versatile individual interested in
-    web design, front-end development, AI and emerging technologies.
-    I enjoy exploring innovative tools, learning new skills
-    and transforming creative ideas into digital experiences.
-    <br><br>
-    My vision is to keep learning, experimenting and building
-    something meaningful with technology.
-   </p>
-   <div class="tags">
-    <span class="tag">Web Designer</span>
-    <span class="tag">Developer</span>
-    <span class="tag">Tech Enthusiast</span>
-    <span class="tag">Creative Thinker</span>
-   </div>
-  </div>
- </div>
-</div>
-</section>
-
-<section class="page section" id="skills">
-<div class="container">
- <div class="heading">
-  <small>MY TECHNOLOGY TOOLKIT</small>
-  <h2>Skills & <span>Interests</span></h2>
-  <p>Things I explore, learn and experiment with.</p>
- </div>
- <div class="skills-grid">
-  <div class="skill"><div class="emoji">🌐</div><h3>HTML & CSS</h3><p>Website structures, styling and modern layouts.</p></div>
-  <div class="skill"><div class="emoji">⚡</div><h3>JavaScript</h3><p>Interactive front-end experiences.</p></div>
-  <div class="skill"><div class="emoji">🎨</div><h3>UI / UX Design</h3><p>Creative interfaces and digital design.</p></div>
-  <div class="skill"><div class="emoji">🤖</div><h3>Artificial Intelligence</h3><p>Exploring AI and intelligent applications.</p></div>
-  <div class="skill"><div class="emoji">💻</div><h3>Technology</h3><p>Discovering new tools and innovations.</p></div>
-  <div class="skill"><div class="emoji">🚀</div><h3>Problem Solving</h3><p>Creative ideas and logical thinking.</p></div>
- </div>
-</div>
-</section>
-
-<section class="page section" id="projects">
-<div class="container">
- <div class="heading">
-  <small>EXPERIMENTAL WORKSPACE</small>
-  <h2>Featured <span>Projects</span></h2>
-  <p>Demo concepts created for portfolio presentation.</p>
- </div>
-
- <div class="filters">
-  <button class="filter active" data-filter="all">All</button>
-  <button class="filter" data-filter="web">Web</button>
-  <button class="filter" data-filter="ai">AI & Tech</button>
-  <button class="filter" data-filter="creative">Creative</button>
- </div>
-
- <div class="project-grid">
-  <article class="project" data-category="ai">
-   <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=85" alt="AI robot">
-   <div class="project-content">
-    <span class="demo-label">DEMO CONCEPT</span>
-    <h3>NEXUS AI</h3><p>Futuristic AI assistant interface concept.</p>
-    <button onclick="showProject(0)">View Details ↗</button>
-   </div>
-  </article>
-  <article class="project" data-category="web">
-   <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=85" alt="Analytics dashboard">
-   <div class="project-content">
-    <span class="demo-label">DEMO CONCEPT</span>
-    <h3>QUANTUM DASHBOARD</h3><p>Modern data visualization dashboard.</p>
-    <button onclick="showProject(1)">View Details ↗</button>
-   </div>
-  </article>
-  <article class="project" data-category="ai">
-   <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=85" alt="Cyber security">
-   <div class="project-content">
-    <span class="demo-label">DEMO CONCEPT</span>
-    <h3>CYBER SHIELD</h3><p>Cybersecurity monitoring UI concept.</p>
-    <button onclick="showProject(2)">View Details ↗</button>
-   </div>
-  </article>
-  <article class="project" data-category="web">
-   <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=85" alt="Web developer workspace">
-   <div class="project-content">
-    <span class="demo-label">DEMO CONCEPT</span>
-    <h3>DEVSPACE</h3><p>Creative front-end developer portfolio.</p>
-    <button onclick="showProject(3)">View Details ↗</button>
-   </div>
-  </article>
-  <article class="project" data-category="creative">
-   <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=800&q=85" alt="Digital future">
-   <div class="project-content">
-    <span class="demo-label">DEMO CONCEPT</span>
-    <h3>NEON UNIVERSE</h3><p>Experimental digital art and visual design.</p>
-    <button onclick="showProject(4)">View Details ↗</button>
-   </div>
-  </article>
-  <article class="project" data-category="creative">
-   <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=85" alt="Digital creative studio">
-   <div class="project-content">
-    <span class="demo-label">DEMO CONCEPT</span>
-    <h3>DIGITAL STUDIO</h3><p>Creative digital agency website concept.</p>
-    <button onclick="showProject(5)">View Details ↗</button>
-   </div>
-  </article>
- </div>
-</div>
-</section>
-
-<section class="page section" id="journey">
-<div class="container">
- <div class="heading">
-  <small>GROWTH & DEVELOPMENT</small>
-  <h2>My <span>Journey</span></h2>
-  <p>Always learning. Always exploring.</p>
- </div>
- <div class="journey">
-  <div class="journey-card">
-   <small>FOUNDATION</small>
-   <h3>Discovering Technology</h3>
-   <p>Learning computers, digital tools and technology fundamentals.</p>
-  </div>
-  <div class="journey-card">
-   <small>WEB DEVELOPMENT</small>
-   <h3>Exploring the Web</h3>
-   <p>Exploring front-end development, HTML, CSS and JavaScript.</p>
-  </div>
-  <div class="journey-card">
-   <small>AI & INNOVATION</small>
-   <h3>Exploring New Possibilities</h3>
-   <p>Experimenting with AI and emerging digital technologies.</p>
-  </div>
- </div>
-</div>
-</section>
-
-<section class="page section" id="contact">
-<div class="container">
- <div class="heading">
-  <small>GET IN TOUCH</small>
-  <h2>Let's <span>Connect</span></h2>
-  <p>Ideas, opportunities and creative collaborations.</p>
- </div>
- <div class="contact-box">
-  <h3>Let's Build Something Amazing.</h3>
-  <p>Have an interesting idea or project? I'd love to hear from you.</p>
-  <a class="email" href="mailto:Ytnishugautam123@gmail.com">Ytnishugautam123@gmail.com</a>
-  <div class="actions" style="justify-content:center">
-   <a class="btn primary" href="mailto:Ytnishugautam123@gmail.com?subject=Project%20Enquiry">Send Email ↗</a>
-   <a class="btn" href="https://github.com/web-nishugautam1" target="_blank">GitHub ↗</a>
-  </div>
- </div>
-</div>
-</section>
-
-</main>
-
-<footer>
- Designed & Developed by <span>Nishu Gautam</span><br>
- © 2026 Nishu Gautam. All Rights Reserved.
-</footer>
-
-<div class="modal" id="modal" onclick="outsideClose(event)">
- <div class="modal-box">
-  <button class="close" onclick="closeModal()">✕</button>
-  <img id="modalImg" src="" alt="Project">
-  <span class="demo-label">DEMO / CONCEPT PROJECT</span>
-  <h2 id="modalTitle"></h2>
-  <p id="modalText"></p>
-  <br>
-  <a class="btn primary" href="mailto:Ytnishugautam123@gmail.com">Discuss Project ↗</a>
- </div>
-</div>
-
-<script>
-const pages=document.querySelectorAll(".page");
-const links=document.querySelectorAll(".navlinks a");
-const menu=document.getElementById("menu");
-const nav=document.getElementById("links");
-
-function openPage(id,update=true){
- const target=document.getElementById(id);
- if(!target || !target.classList.contains("page")) return;
-
+ const id=location.hash.slice(1)||"home";
+ if(id===currentPage)return;
  pages.forEach(p=>p.classList.remove("active"));
- target.classList.add("active");
-
- links.forEach(a=>a.classList.toggle("active",a.hash==="#"+id));
- nav.classList.remove("open");
- menu.textContent="☰";
+ const target=document.getElementById(id);
+ if(target&&target.classList.contains("page")){
+  target.classList.add("active");
+  currentPage=id;
+  navlinks.forEach(a=>a.classList.toggle("active",a.hash==="#"+id));
+ }
  window.scrollTo(0,0);
-
- if(update) history.pushState({page:id},"","#"+id);
-}
-
-links.forEach(a=>{
- a.addEventListener("click",e=>{
-  e.preventDefault();
-  openPage(a.hash.slice(1));
- });
 });
 
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
- a.addEventListener("click",e=>{
-  const id=a.getAttribute("href").slice(1);
-  if(document.getElementById(id)?.classList.contains("page")){
-   e.preventDefault();
-   openPage(id);
+const initial=location.hash.slice(1)||"home";
+const initialTarget=document.getElementById(initial);
+pages.forEach(p=>p.classList.remove("active"));
+const startingPage=initialTarget?.classList.contains("page")?initialTarget:document.getElementById("home");
+startingPage.classList.add("active");
+currentPage=startingPage.id;
+navlinks.forEach(a=>a.classList.toggle("active",a.hash==="#"+currentPage));
+
+/* ANIMATED STATS */
+const counters=document.querySelectorAll(".counter");
+const observed=new WeakSet();
+const observer=new IntersectionObserver(entries=>{
+ entries.forEach(entry=>{
+  if(entry.isIntersecting&&!observed.has(entry.target)){
+   observed.add(entry.target);
+   const el=entry.target;
+   const target=Number(el.dataset.value);
+   const suffix=el.dataset.suffix||"";
+   const start=performance.now();
+   function update(now){
+    const progress=Math.min((now-start)/1200,1);
+    const eased=1-Math.pow(1-progress,3);
+    el.textContent=Math.floor(target*eased)+suffix;
+    if(progress<1)requestAnimationFrame(update);
+   }
+   requestAnimationFrame(update);
   }
  });
 });
+counters.forEach(c=>observer.observe(c));
 
-menu.addEventListener("click",()=>{
- nav.classList.toggle("open");
- menu.textContent=nav.classList.contains("open")?"✕":"☰";
-});
-
-window.addEventListener("popstate",()=>{
- openPage(location.hash.slice(1)||"home",false);
-});
-
-openPage(location.hash.slice(1)||"home",false);
-
+/* PROJECT FILTER */
 document.querySelectorAll(".filter").forEach(btn=>{
  btn.addEventListener("click",()=>{
   document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));
   btn.classList.add("active");
   document.querySelectorAll(".project").forEach(card=>{
    card.classList.toggle("hide",
-    btn.dataset.filter!=="all" &&
-    card.dataset.category!==btn.dataset.filter);
+    btn.dataset.filter!=="all"&&card.dataset.category!==btn.dataset.filter);
   });
  });
 });
 
+/* PROJECT DETAILS */
 const descriptions=[
- ["NEXUS AI","An experimental artificial intelligence dashboard concept with futuristic visual elements."],
- ["QUANTUM DASHBOARD","A sample analytics dashboard design featuring data visualization."],
- ["CYBER SHIELD","A cybersecurity monitoring interface concept."],
- ["DEVSPACE","A modern developer portfolio and web interface concept."],
- ["NEON UNIVERSE","An experimental digital art and immersive interface concept."],
- ["DIGITAL STUDIO","A creative digital branding and agency website concept."]
+ ["NEXUS AI","An experimental AI assistant dashboard concept with futuristic visual elements and an intelligent digital workspace."],
+ ["QUANTUM DASHBOARD","A sample analytics dashboard concept exploring data visualization and modern interfaces."],
+ ["CYBER SHIELD","A cybersecurity monitoring interface concept featuring security-themed visuals."],
+ ["DEVSPACE","A developer portfolio design concept focused on responsive web experiences."],
+ ["NEON UNIVERSE","An experimental visual design concept inspired by digital worlds."],
+ ["DIGITAL STUDIO","A creative agency website concept focused on branding and digital presentation."]
 ];
 
 function showProject(i){
@@ -1206,20 +851,31 @@ function showProject(i){
  document.getElementById("modal").classList.add("show");
  document.body.style.overflow="hidden";
 }
-
 function closeModal(){
  document.getElementById("modal").classList.remove("show");
  document.body.style.overflow="";
 }
-
 function outsideClose(e){
  if(e.target.id==="modal")closeModal();
 }
-
 document.addEventListener("keydown",e=>{
  if(e.key==="Escape")closeModal();
 });
-</script>
 
+/* 3D TILT ON DESKTOP */
+if(!mobile&&!reduced){
+ document.querySelectorAll(".project").forEach(card=>{
+  card.addEventListener("mousemove",e=>{
+   const rect=card.getBoundingClientRect();
+   const x=(e.clientX-rect.left)/rect.width-.5;
+   const y=(e.clientY-rect.top)/rect.height-.5;
+   card.style.transform=`perspective(700px) rotateX(${-y*5}deg) rotateY(${x*5}deg) translateY(-5px)`;
+  });
+  card.addEventListener("mouseleave",()=>{
+   card.style.transform="";
+  });
+ });
+}
+</script>
 </body>
 </html>
