@@ -4,230 +4,284 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nishu Gautam | Tech Portfolio</title>
-<meta name="description" content="Nishu Gautam - Front-End Developer, Web Designer and Technology Enthusiast.">
+<meta name="theme-color" content="#080912">
+<title>Nishu Gautam | Digital Creator</title>
+<meta name="description" content="Nishu Gautam - Front-End Developer, Web Designer and Tech Enthusiast.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  scroll-behavior: smooth;
+:root {
+  --bg:#080912;
+  --surface:#111522;
+  --blue:#64d8ff;
+  --purple:#a78bfa;
+  --white:#f8fafc;
+  --muted:#9ba4b8;
 }
-
-body {
-  background: #080b12;
-  color: #fff;
-  overflow-x: hidden;
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--white);
+  font-family:Inter,Arial,sans-serif;
+  overflow-x:hidden;
 }
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(#00bfff0c 1px, transparent 1px),
-    linear-gradient(90deg, #00bfff0c 1px, transparent 1px);
-  background-size: 45px 45px;
-  pointer-events: none;
-  z-index: -1;
+a{text-decoration:none;color:inherit}
+button{font:inherit;cursor:pointer}
+img{max-width:100%;display:block}
+.container{width:min(1120px,90%);margin:auto}
+body:before{
+  content:"";position:fixed;inset:0;z-index:-2;
+  background:
+  radial-gradient(ellipse at 10% 15%,#164f8738,transparent 40%),
+  radial-gradient(ellipse at 90% 50%,#7531a82b,transparent 40%),
+  #080912;
 }
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 22px 8%;
-  background: #080b12eF;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  border-bottom: 1px solid #ffffff12;
+body:after{
+  content:"";position:fixed;inset:0;z-index:-1;
+  background-image:linear-gradient(#ffffff08 1px,transparent 1px),
+  linear-gradient(90deg,#ffffff08 1px,transparent 1px);
+  background-size:55px 55px;pointer-events:none;
 }
-
-.logo {
-  font-size: 23px;
-  font-weight: bold;
-  color: #00d9ff;
+header{
+  position:sticky;top:0;z-index:100;
+  background:#080912df;backdrop-filter:blur(18px);
+  border-bottom:1px solid #ffffff13;
 }
-
-nav a {
-  color: #ccc;
-  text-decoration: none;
-  margin-left: 22px;
-  font-size: 14px;
+nav{
+  height:75px;display:flex;align-items:center;
+  justify-content:space-between;
 }
-
-nav a:hover {
-  color: #00d9ff;
+.logo{
+  font:700 25px "Space Grotesk";
+  letter-spacing:-1px;
 }
-
-.hero {
-  min-height: 90vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 50px 20px;
-  position: relative;
+.logo span{color:var(--blue)}
+.navlinks{display:flex;gap:28px}
+.navlinks a{
+  color:#c1c9d7;font-size:13px;transition:.3s;
 }
-
-.glow {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  background: #0077ff;
-  filter: blur(150px);
-  opacity: .25;
-  z-index: -1;
+.navlinks a:hover{color:var(--blue)}
+.menu{
+  display:none;background:#182136;color:white;
+  border:1px solid #ffffff20;padding:9px 13px;
+  border-radius:8px;
 }
-
-.tag {
-  color: #00d9ff;
-  border: 1px solid #00d9ff55;
-  padding: 9px 18px;
-  border-radius: 30px;
-  font-size: 13px;
-  margin-bottom: 25px;
+.hero{
+  min-height:690px;display:grid;
+  grid-template-columns:1.05fr .95fr;
+  align-items:center;gap:40px;padding:65px 0;
 }
-
-.hero h1 {
-  font-size: clamp(40px, 8vw, 75px);
-  line-height: 1.1;
-  margin-bottom: 20px;
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:10px 14px;border:1px solid #64d8ff55;
+  border-radius:40px;background:#64d8ff0c;
+  color:var(--blue);font-size:11px;
+  letter-spacing:1.5px;margin-bottom:25px;
 }
-
-.hero h1 span {
-  background: linear-gradient(90deg, #00d9ff, #7065ff);
-  -webkit-background-clip: text;
-  color: transparent;
+.dot{
+  width:7px;height:7px;background:#49e5a3;
+  border-radius:50%;box-shadow:0 0 12px #49e5a3;
 }
-
-.hero p {
-  color: #aab3c5;
-  max-width: 600px;
-  line-height: 1.8;
+h1{
+  font:700 clamp(42px,6vw,72px)/1.08 "Space Grotesk";
+  letter-spacing:-2px;margin-bottom:20px;
 }
-
-.buttons {
-  margin-top: 30px;
+.gradient{
+  background:linear-gradient(100deg,#64d8ff,#a78bfa);
+  -webkit-background-clip:text;color:transparent;
 }
-
-.btn {
-  display: inline-block;
-  padding: 13px 25px;
-  margin: 7px;
-  text-decoration: none;
-  border-radius: 8px;
-  color: #fff;
-  border: 1px solid #00d9ff;
-  transition: .3s;
+.hero h2{font-size:20px;color:#d0d7e5;margin-bottom:18px}
+.hero p{color:var(--muted);font-size:15px;line-height:1.9}
+.actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:30px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:14px 21px;border-radius:8px;
+  font-size:13px;font-weight:700;
+  border:1px solid #ffffff30;transition:.3s;
 }
-
-.btn.primary {
-  background: #00bde8;
-  color: #050b13;
-  font-weight: bold;
+.btn.primary{
+  background:linear-gradient(100deg,#168dca,#7259d8);
+  border:0;color:white;
 }
-
-.btn:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 0 25px #00d9ff55;
+.btn:hover{transform:translateY(-4px);box-shadow:0 10px 30px #398de444}
+.hero-image{position:relative}
+.hero-image img{
+  width:100%;height:390px;object-fit:cover;
+  border-radius:20px;border:1px solid #ffffff22;
+  box-shadow:0 20px 80px #0009;
 }
-
-section {
-  padding: 80px 8%;
-  text-align: center;
+.image-caption{
+  position:absolute;bottom:17px;left:17px;right:17px;
+  background:#080912d9;backdrop-filter:blur(15px);
+  border:1px solid #ffffff20;border-radius:12px;
+  padding:15px;
 }
-
-.heading {
-  font-size: 34px;
-  margin-bottom: 35px;
+.image-caption small{color:var(--blue)}
+.image-caption h3{font-size:15px;margin-top:5px}
+.section{padding:95px 0;scroll-margin-top:75px}
+.section-head{text-align:center;margin-bottom:45px}
+.section-head small{color:var(--blue);letter-spacing:2px}
+.section-head h2{
+  font:700 37px "Space Grotesk";margin:13px 0;
 }
-
-.heading span {
-  color: #00d9ff;
+.section-head p{color:var(--muted);font-size:14px}
+.about{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:35px;align-items:center;
 }
-
-.about {
-  max-width: 750px;
-  margin: auto;
-  color: #aab3c5;
-  line-height: 1.9;
+.about img{
+  height:340px;width:100%;object-fit:cover;
+  border-radius:17px;border:1px solid #ffffff20;
 }
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  gap: 20px;
+.about-text h3{font:600 27px "Space Grotesk";margin-bottom:18px}
+.about-text p{color:var(--muted);line-height:1.9;font-size:14px}
+.tags{display:flex;gap:9px;flex-wrap:wrap;margin-top:22px}
+.tag{
+  background:#17243a;border:1px solid #64d8ff35;
+  color:#91dfff;padding:8px 12px;border-radius:7px;
+  font-size:11px;
 }
-
-.card {
-  background: linear-gradient(145deg, #131c2b, #0b101a);
-  border: 1px solid #25374d;
-  border-radius: 15px;
-  padding: 30px 20px;
-  transition: .3s;
+.skills{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:15px;
 }
-
-.card:hover {
-  transform: translateY(-7px);
-  border-color: #00d9ff;
-  box-shadow: 0 10px 35px #00d9ff12;
+.skill{
+  background:linear-gradient(145deg,#161d30,#10131f);
+  border:1px solid #ffffff17;border-radius:13px;
+  padding:25px 18px;transition:.3s;
 }
-
-.card .symbol {
-  font-size: 35px;
-  margin-bottom: 15px;
+.skill:hover{border-color:var(--blue);transform:translateY(-5px)}
+.skill .emoji{font-size:30px;margin-bottom:17px}
+.skill h3{font-size:15px;margin-bottom:9px}
+.skill p{font-size:12px;color:var(--muted);line-height:1.7}
+.filters{
+  display:flex;justify-content:center;gap:10px;
+  flex-wrap:wrap;margin-bottom:30px;
 }
-
-.card h3 {
-  margin-bottom: 12px;
-  color: #00d9ff;
+.filter{
+  background:#121a2b;color:#aeb9ce;
+  border:1px solid #ffffff20;padding:10px 17px;
+  border-radius:30px;font-size:12px;
 }
-
-.card p {
-  color: #9daabe;
-  line-height: 1.7;
-  font-size: 14px;
+.filter.active,.filter:hover{
+  background:#17638a;color:white;border-color:#64d8ff;
 }
-
-.contact p {
-  color: #aab3c5;
-  margin: 15px;
+.projects{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
 }
-
-.contact a {
-  color: #00d9ff;
-  text-decoration: none;
+.project{
+  overflow:hidden;background:#111827;
+  border:1px solid #ffffff18;border-radius:15px;
+  transition:.3s;
 }
-
-footer {
-  text-align: center;
-  padding: 25px;
-  background: #0d131f;
-  color: #8190a6;
-  font-size: 13px;
-  border-top: 1px solid #ffffff15;
+.project:hover{
+  transform:translateY(-7px);
+  border-color:#64d8ff99;
+  box-shadow:0 15px 45px #0006;
 }
-
-@media(max-width:600px) {
-  header {
-    padding: 18px 5%;
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  nav a {
-    margin: 0 7px;
-    font-size: 12px;
-  }
-
-  section {
-    padding: 60px 6%;
-  }
+.project.hide{display:none}
+.project img{
+  width:100%;height:185px;object-fit:cover;
+  transition:.5s;
+}
+.project:hover img{transform:scale(1.04)}
+.project-content{padding:20px}
+.demo-label{
+  display:inline-block;font-size:9px;
+  color:#c4b5fd;background:#a78bfa18;
+  border:1px solid #a78bfa44;
+  border-radius:5px;padding:5px 8px;
+  letter-spacing:1px;margin-bottom:13px;
+}
+.project h3{font-size:17px;margin-bottom:10px}
+.project p{font-size:12px;color:var(--muted);line-height:1.8}
+.project button{
+  background:none;border:0;color:var(--blue);
+  font-size:12px;font-weight:bold;margin-top:17px;
+}
+.project button:hover{color:white}
+.timeline{
+  max-width:700px;margin:auto;
+  border-left:1px solid #64d8ff55;padding-left:25px;
+}
+.timeline-item{
+  position:relative;background:#121827;
+  border:1px solid #ffffff17;border-radius:12px;
+  padding:23px;margin-bottom:20px;
+}
+.timeline-item:before{
+  content:"";position:absolute;left:-31px;top:25px;
+  width:10px;height:10px;background:var(--blue);
+  border-radius:50%;box-shadow:0 0 12px var(--blue);
+}
+.timeline-item small{color:var(--blue)}
+.timeline-item h3{margin:9px 0;font-size:17px}
+.timeline-item p{color:var(--muted);font-size:13px;line-height:1.7}
+.contact-box{
+  max-width:750px;margin:auto;text-align:center;
+  background:linear-gradient(145deg,#17243b,#111522);
+  border:1px solid #64d8ff44;border-radius:20px;
+  padding:50px 22px;
+}
+.contact-box h3{font:700 30px "Space Grotesk";margin-bottom:15px}
+.contact-box p{color:var(--muted);font-size:14px;line-height:1.8}
+.email{
+  display:block;color:var(--blue);
+  margin:23px 0;font-size:15px;overflow-wrap:anywhere;
+}
+footer{
+  border-top:1px solid #ffffff18;
+  padding:30px 0;text-align:center;
+  color:var(--muted);font-size:12px;line-height:2;
+}
+footer span{color:var(--blue)}
+.modal{
+  position:fixed;inset:0;background:#000c;
+  z-index:300;display:none;align-items:center;
+  justify-content:center;padding:20px;
+}
+.modal.show{display:flex}
+.modal-box{
+  max-width:530px;width:100%;background:#151d30;
+  border:1px solid #64d8ff66;border-radius:17px;
+  padding:30px;position:relative;
+}
+.modal-box img{
+  width:100%;height:180px;object-fit:cover;
+  border-radius:10px;margin-bottom:18px;
+}
+.modal-box h2{margin-bottom:12px}
+.modal-box p{color:#aab5c8;line-height:1.8;font-size:14px}
+.close{
+  position:absolute;right:15px;top:12px;
+  background:#111827;border:1px solid #ffffff33;
+  color:white;width:34px;height:34px;border-radius:50%;
+}
+@media(max-width:800px){
+ .hero{grid-template-columns:1fr;padding-top:70px}
+ .hero-image img{height:300px}
+ .skills{grid-template-columns:repeat(2,1fr)}
+ .projects{grid-template-columns:repeat(2,1fr)}
+ .about{grid-template-columns:1fr}
+}
+@media(max-width:550px){
+ .menu{display:block}
+ .navlinks{
+   display:none;position:absolute;top:75px;left:0;
+   background:#101522;width:100%;padding:25px;
+   flex-direction:column;gap:23px;
+   border-bottom:1px solid #ffffff20;
+ }
+ .navlinks.open{display:flex}
+ .hero{min-height:auto;padding:75px 0}
+ .hero-image img{height:250px}
+ .projects{grid-template-columns:1fr}
+ .skills{grid-template-columns:repeat(2,1fr)}
+ .section{padding:70px 0}
+ .section-head h2{font-size:30px}
+ .contact-box{padding:35px 18px}
 }
 </style>
 </head>
@@ -235,125 +289,297 @@ footer {
 <body>
 
 <header>
-  <div class="logo">NISHU.</div>
-  <nav>
+<nav class="container">
+  <a class="logo" href="#home">NISHU<span>.</span></a>
+  <button class="menu" id="menu" aria-label="Toggle navigation">☰</button>
+  <div class="navlinks" id="navlinks">
     <a href="#home">Home</a>
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
+    <a href="#experience">Journey</a>
     <a href="#contact">Contact</a>
-  </nav>
+  </div>
+</nav>
 </header>
 
 <main>
+<section class="container hero" id="home">
+  <div>
+    <div class="eyebrow"><span class="dot"></span> DIGITAL CREATOR & TECH ENTHUSIAST</div>
+    <h1>Think Beyond.<br>Build <span class="gradient">The Future.</span></h1>
+    <h2>I'm Nishu Gautam.</h2>
+    <p>
+      Versatile guy. Creative thinker. Technology enthusiast.
+      Exploring the digital universe through web design,
+      front-end development, artificial intelligence and innovation.
+    </p>
+    <div class="actions">
+      <a href="#projects" class="btn primary">Explore My Work ↗</a>
+      <a href="#contact" class="btn">Let's Connect</a>
+    </div>
+  </div>
 
-<div class="hero" id="home">
-  <div class="glow"></div>
+  <div class="hero-image">
+    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=85" alt="Advanced computer technology and circuit board">
+    <div class="image-caption">
+      <small>MY DIGITAL WORLD</small>
+      <h3>Technology meets Creativity.</h3>
+    </div>
+  </div>
+</section>
 
-  <div class="tag">WELCOME TO MY DIGITAL WORLD</div>
-
-  <h1>I'm <span>Nishu Gautam</span></h1>
-
-  <h2>Web Designer | Front-End Developer</h2>
-
-  <p>
-    A versatile guy, creative thinker and technology enthusiast.
-    I love building modern digital experiences, exploring new
-    technologies and turning creative ideas into reality.
-  </p>
-
-  <div class="buttons">
-    <a href="#projects" class="btn primary">Explore My Work</a>
-    <a href="#contact" class="btn">Contact Me</a>
+<section class="section" id="about">
+<div class="container">
+  <div class="section-head">
+    <small>WHO AM I?</small>
+    <h2>About <span class="gradient">Me</span></h2>
+    <p>A curious mind with a passion for digital innovation.</p>
+  </div>
+  <div class="about">
+    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=85" alt="Modern technology workspace">
+    <div class="about-text">
+      <h3>Creating Ideas.<br>Exploring Possibilities.</h3>
+      <p>
+        I'm Nishu Gautam, a versatile individual interested in
+        web design, front-end development, AI and emerging technology.
+        I enjoy learning, experimenting and transforming ideas into
+        interactive digital experiences.
+        <br><br>
+        My approach is simple: stay curious, keep creating and
+        never stop exploring what's possible with technology.
+      </p>
+      <div class="tags">
+        <span class="tag">Creative Thinker</span>
+        <span class="tag">Tech Enthusiast</span>
+        <span class="tag">Web Designer</span>
+        <span class="tag">Front-End Developer</span>
+      </div>
+    </div>
   </div>
 </div>
-
-<section id="about">
-  <h2 class="heading">About <span>Me</span></h2>
-  <p class="about">
-    I'm Nishu Gautam, a versatile and passionate technology enthusiast
-    interested in web design, front-end development and digital innovation.
-    I enjoy experimenting with modern technologies, learning new skills
-    and creating clean, responsive and interactive websites.
-    My goal is to transform ideas into meaningful digital experiences.
-  </p>
 </section>
 
-<section id="skills">
-  <h2 class="heading">My <span>Skills</span></h2>
+<section class="section" id="skills">
+<div class="container">
+  <div class="section-head">
+    <small>WHAT I EXPLORE</small>
+    <h2>My <span class="gradient">Skills</span></h2>
+    <p>My technology interests and creative toolkit.</p>
+  </div>
+  <div class="skills">
+    <div class="skill"><div class="emoji">🌐</div><h3>HTML & CSS</h3><p>Website structure, styling and responsive layouts.</p></div>
+    <div class="skill"><div class="emoji">⚡</div><h3>JavaScript</h3><p>Interactive interfaces and front-end functionality.</p></div>
+    <div class="skill"><div class="emoji">🎨</div><h3>UI / Web Design</h3><p>Visual experiences and modern design concepts.</p></div>
+    <div class="skill"><div class="emoji">🤖</div><h3>Artificial Intelligence</h3><p>Exploring AI tools and intelligent applications.</p></div>
+    <div class="skill"><div class="emoji">🧠</div><h3>Problem Solving</h3><p>Analytical thinking and creative approaches.</p></div>
+    <div class="skill"><div class="emoji">💻</div><h3>Technology</h3><p>Discovering new tools and digital innovations.</p></div>
+    <div class="skill"><div class="emoji">📱</div><h3>Responsive Design</h3><p>Mobile-friendly and adaptable interfaces.</p></div>
+    <div class="skill"><div class="emoji">🚀</div><h3>Digital Creativity</h3><p>Experiments, ideas and creative projects.</p></div>
+  </div>
+</div>
+</section>
 
-  <div class="grid">
-    <div class="card">
-      <div class="symbol">💻</div>
-      <h3>Web Design</h3>
-      <p>Modern layouts, creative interfaces and user-friendly designs.</p>
+<section class="section" id="projects">
+<div class="container">
+  <div class="section-head">
+    <small>SELECTED CONCEPTS</small>
+    <h2>Featured <span class="gradient">Work</span></h2>
+    <p>Temporary demonstration projects and design concepts.</p>
+  </div>
+
+  <div class="filters">
+    <button class="filter active" data-filter="all">All Projects</button>
+    <button class="filter" data-filter="web">Web Design</button>
+    <button class="filter" data-filter="ai">AI & Tech</button>
+    <button class="filter" data-filter="creative">Creative</button>
+  </div>
+
+  <div class="projects">
+
+    <article class="project" data-category="ai">
+      <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=85" alt="Artificial intelligence robot concept">
+      <div class="project-content">
+        <span class="demo-label">DEMO CONCEPT</span>
+        <h3>NEXUS AI</h3>
+        <p>A futuristic AI assistant dashboard interface concept.</p>
+        <button onclick="showProject(0)">Explore Project ↗</button>
+      </div>
+    </article>
+
+    <article class="project" data-category="web">
+      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=85" alt="Web analytics dashboard concept">
+      <div class="project-content">
+        <span class="demo-label">DEMO CONCEPT</span>
+        <h3>QUANTUM DASHBOARD</h3>
+        <p>A clean analytics dashboard and data visualization concept.</p>
+        <button onclick="showProject(1)">Explore Project ↗</button>
+      </div>
+    </article>
+
+    <article class="project" data-category="ai">
+      <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=85" alt="Cybersecurity technology concept">
+      <div class="project-content">
+        <span class="demo-label">DEMO CONCEPT</span>
+        <h3>CYBER SHIELD</h3>
+        <p>A futuristic cybersecurity monitoring interface concept.</p>
+        <button onclick="showProject(2)">Explore Project ↗</button>
+      </div>
+    </article>
+
+    <article class="project" data-category="web">
+      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=85" alt="Developer working on a laptop">
+      <div class="project-content">
+        <span class="demo-label">DEMO CONCEPT</span>
+        <h3>DEVSPACE</h3>
+        <p>A developer portfolio and modern web experience concept.</p>
+        <button onclick="showProject(3)">Explore Project ↗</button>
+      </div>
+    </article>
+
+    <article class="project" data-category="creative">
+      <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=800&q=85" alt="Futuristic digital virtual reality concept">
+      <div class="project-content">
+        <span class="demo-label">DEMO CONCEPT</span>
+        <h3>NEON UNIVERSE</h3>
+        <p>An experimental digital art and futuristic interface concept.</p>
+        <button onclick="showProject(4)">Explore Project ↗</button>
+      </div>
+    </article>
+
+    <article class="project" data-category="creative">
+      <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=85" alt="Creative digital workspace">
+      <div class="project-content">
+        <span class="demo-label">DEMO CONCEPT</span>
+        <h3>DIGITAL STUDIO</h3>
+        <p>A creative agency and digital branding website concept.</p>
+        <button onclick="showProject(5)">Explore Project ↗</button>
+      </div>
+    </article>
+
+  </div>
+</div>
+</section>
+
+<section class="section" id="experience">
+<div class="container">
+  <div class="section-head">
+    <small>MY PROGRESS</small>
+    <h2>Learning <span class="gradient">Journey</span></h2>
+    <p>A work in progress. Always learning and experimenting.</p>
+  </div>
+  <div class="timeline">
+    <div class="timeline-item">
+      <small>FOUNDATION</small>
+      <h3>Discovering Technology</h3>
+      <p>Building an understanding of computers, digital tools and technology.</p>
     </div>
-
-    <div class="card">
-      <div class="symbol">🌐</div>
-      <h3>Front-End Development</h3>
-      <p>HTML, CSS, JavaScript and responsive website development.</p>
+    <div class="timeline-item">
+      <small>WEB DEVELOPMENT</small>
+      <h3>Exploring the Web</h3>
+      <p>Learning HTML, CSS, JavaScript and modern website design.</p>
     </div>
-
-    <div class="card">
-      <div class="symbol">🚀</div>
-      <h3>Technology</h3>
-      <p>Exploring AI, digital innovation and emerging technologies.</p>
-    </div>
-
-    <div class="card">
-      <div class="symbol">🎨</div>
-      <h3>Creative Thinking</h3>
-      <p>Creative ideas, problem solving and digital creativity.</p>
+    <div class="timeline-item">
+      <small>AI & INNOVATION</small>
+      <h3>Exploring New Possibilities</h3>
+      <p>Experimenting with artificial intelligence and emerging digital tools.</p>
     </div>
   </div>
+</div>
 </section>
 
-<section id="projects">
-  <h2 class="heading">My <span>Projects</span></h2>
-
-  <div class="grid">
-    <div class="card">
-      <div class="symbol">⚡</div>
-      <h3>Web Projects</h3>
-      <p>Exploring and building modern web experiences.</p>
-    </div>
-
-    <div class="card">
-      <div class="symbol">🤖</div>
-      <h3>AI Experiments</h3>
-      <p>Exploring artificial intelligence and creative tools.</p>
-    </div>
-
-    <div class="card">
-      <div class="symbol">💡</div>
-      <h3>Creative Ideas</h3>
-      <p>Turning innovative concepts into digital projects.</p>
+<section class="section" id="contact">
+<div class="container">
+  <div class="contact-box">
+    <div class="eyebrow">LET'S CREATE SOMETHING</div>
+    <h3>Have an Idea?<br><span class="gradient">Let's Talk.</span></h3>
+    <p>Interested in technology, collaboration or creative projects?</p>
+    <a class="email" href="mailto:Ytnishugautam123@gmail.com">
+      Ytnishugautam123@gmail.com
+    </a>
+    <div class="actions" style="justify-content:center">
+      <a class="btn primary" href="mailto:Ytnishugautam123@gmail.com?subject=Project%20Enquiry">Send an Email ↗</a>
+      <a class="btn" href="https://github.com/web-nishugautam1" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
   </div>
+</div>
 </section>
-
-<section id="contact" class="contact">
-  <h2 class="heading">Let's <span>Connect</span></h2>
-  <p>Have an idea or project? Let's build something amazing.</p>
-
-  <p>Email: <a href="mailto:Ytnishugautam123@gmail.com">
-    Ytnishugautam123@gmail.com
-  </a></p>
-
-  <a class="btn primary"
-     href="mailto:Ytnishugautam123@gmail.com">
-     Send Me an Email
-  </a>
-</section>
-
 </main>
 
 <footer>
-  © 2026 Nishu Gautam. All Rights Reserved.
-  <br><br>
-  Designed with passion and technology.
+  <div class="container">
+    Designed & Developed by <span>Nishu Gautam</span><br>
+    © 2026 Nishu Gautam. All Rights Reserved.<br>
+    Creative Mind. Digital Vision. Future Technology.
+  </div>
 </footer>
 
+<div class="modal" id="modal" onclick="outsideClose(event)">
+ <div class="modal-box">
+   <button class="close" onclick="closeModal()">✕</button>
+   <img id="modalImg" src="" alt="Project preview">
+   <span class="demo-label">DEMO / CONCEPT PROJECT</span>
+   <h2 id="modalTitle"></h2>
+   <p id="modalText"></p>
+   <br>
+   <a class="btn primary" href="mailto:Ytnishugautam123@gmail.com?subject=Project%20Enquiry">Discuss a Similar Idea ↗</a>
+ </div>
+</div>
+
+<script>
+const menu=document.getElementById("menu");
+const links=document.getElementById("navlinks");
+
+menu.addEventListener("click",()=>{
+ links.classList.toggle("open");
+ menu.textContent=links.classList.contains("open")?"✕":"☰";
+});
+
+document.querySelectorAll(".navlinks a").forEach(a=>{
+ a.addEventListener("click",()=>{
+  links.classList.remove("open");
+  menu.textContent="☰";
+ });
+});
+
+document.querySelectorAll(".filter").forEach(button=>{
+ button.addEventListener("click",()=>{
+  document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));
+  button.classList.add("active");
+  const category=button.dataset.filter;
+  document.querySelectorAll(".project").forEach(card=>{
+   card.classList.toggle("hide",category!=="all" && card.dataset.category!==category);
+  });
+ });
+});
+
+const data=[
+ ["NEXUS AI","An experimental AI assistant dashboard concept featuring futuristic visuals, a modern interface and an intelligent digital workspace."],
+ ["QUANTUM DASHBOARD","A sample analytics dashboard design exploring data visualization, statistics and modern information architecture."],
+ ["CYBER SHIELD","A cybersecurity interface concept with monitoring panels, network visuals and a futuristic security aesthetic."],
+ ["DEVSPACE","A front-end developer website concept focused on responsive layouts and clean digital presentation."],
+ ["NEON UNIVERSE","An experimental visual design concept inspired by immersive digital worlds and futuristic technology."],
+ ["DIGITAL STUDIO","A creative digital agency website concept focused on branding, creative presentation and online experiences."]
+];
+
+function showProject(index){
+ const card=document.querySelectorAll(".project")[index];
+ document.getElementById("modalTitle").textContent=data[index][0];
+ document.getElementById("modalText").textContent=data[index][1];
+ document.getElementById("modalImg").src=card.querySelector("img").src;
+ document.getElementById("modal").classList.add("show");
+ document.body.style.overflow="hidden";
+}
+function closeModal(){
+ document.getElementById("modal").classList.remove("show");
+ document.body.style.overflow="";
+}
+function outsideClose(event){
+ if(event.target.id==="modal")closeModal();
+}
+document.addEventListener("keydown",e=>{
+ if(e.key==="Escape")closeModal();
+});
+</script>
 </body>
 </html>
